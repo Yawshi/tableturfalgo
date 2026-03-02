@@ -4,11 +4,15 @@ public class Board {
     private boolean[][] permanent = new boolean[9][26];
     private boolean[][] empty = new boolean[9][26];
 
+    /**
+     * Generate a fresh board for the start of a new game.
+     */
     public Board() {
         yellow[4][22] = true;
         permanent[4][22] = true;
         blue[4][3] = true;
         permanent[4][3] = true;
+        updateEmpty();
     }
 
     public String toString() {
@@ -26,7 +30,10 @@ public class Board {
         return output;
     }
 
-    void updateEmpty() {
+    /**
+     * Update the empty field for getEmpty(). Run this at the end of resolving a turn.
+     */
+    public void updateEmpty() {
         for (int r=0; r<26; r++) {
             for (int c=0; c<9; c++) {
                 this.empty[c][r] = !(this.yellow[c][r] || this.blue[c][r] || this.permanent[c][r]);

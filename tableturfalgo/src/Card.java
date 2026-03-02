@@ -1,16 +1,16 @@
 /**
- * Representation of a single card, in hand or in deck.
- * 
- * Getters:
- * > getPattern()
- * > getPermanent()
- * > getSize()
- * > getSpecialCost()
- * > getWidth()
- * > getHeight()
- * 
- * Methods:
- * > toString()
+ * Representation of a single card, in hand or in deck.<br>
+ * <br>
+ * Getters: <br>
+ * > getPattern()<br>
+ * > getPermanent()<br>
+ * > getSize()<br>
+ * > getSpecialCost()<br>
+ * > getWidth()<br>
+ * > getHeight()<br>
+ * <br>
+ * Methods:<br>
+ * > toString()<br>
  * > rotateCard()
  */
 public class Card {

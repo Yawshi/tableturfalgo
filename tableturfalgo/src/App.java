@@ -7,14 +7,10 @@ public class App {
                 12111
                 """;
         Card card = new Card(cardString, 5);
-        System.out.println(card);
-        card = card.rotateCard();
-        System.out.println(card);
-        card = card.rotateCard();
-        System.out.println(card);
-        card = card.rotateCard();
-        System.out.println(card);
-        card = card.rotateCard();
-        System.out.println(card);
+
+        Board board = new Board();
+
+        Move move = new Move(board, card, 5, 18, false, true);
+        System.out.println(move);
     }
 }
