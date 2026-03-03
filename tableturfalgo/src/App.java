@@ -10,7 +10,6 @@ public class App {
 
         Board board = new Board();
 
-        Move move = new Move(board, card, 5, 18, false, true);
-        System.out.println(move);
+        System.out.println(board.getMoves(card, false, false));
     }
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Board {
     private boolean[][] yellow = new boolean[9][26];
     private boolean[][] blue = new boolean[9][26];
@@ -55,5 +57,32 @@ public class Board {
 
     public boolean[][] getEmpty() {
         return this.empty;
+    }
+
+    /**
+     * Searches and returns a list of moves using the specified card.
+     * @param card the card to search for moves with
+     * @param isSpecial if true return only special attack moves, otherwise return only regular moves
+     * @param isYellow if true return moves for yellow, otherwise return moves for blue
+     * @return a list of legal moves using the card
+     * @see Move#Move()
+     */
+    public ArrayList<Move> getMoves(Card card, boolean isSpecial, boolean isYellow) {
+        ArrayList<Move> output = new ArrayList<Move>();
+        for (int x=0; x<4; x++) {
+            // scan board and look for moves from this rotation
+            for (int r=0; r<26-card.getHeight()+1; r++) {
+                for (int c=0; c<9-card.getWidth()+1; c++) {
+                    try {
+                        output.add(new Move(this, card, c, r, isSpecial, isYellow));
+                    } catch (InvalidMoveException e) {
+                        continue;
+                    }
+                }
+            }
+            // then rotate and repeat
+            card = card.rotateCard();
+        }
+        return output;
     }
 }
