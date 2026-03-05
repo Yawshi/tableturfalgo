@@ -78,10 +78,10 @@ public class Move {
             boolean flagAdjacent = false;
             // draw a bounding box around the dimensions of the card plus 1 padding on all four edges, check for special tiles only in that box
             for (int r=row-1; r<=row+card.getHeight()+1; r++) {
-                if (r<0 || 26<r) {continue;}
+                if (r<0 || 26<=r) {continue;}
                 for (int c=column-1; c<=column+card.getWidth()+1; c++) {
-                    if (c<0 || 9<c) {continue;}
-                    if (boardMyColour[c][r] && board.getPermanent()[c][r] && checkAdjacentTiles(c, r, this.ink)) {
+                    if (c<0 || 9<=c) {continue;}
+                    if (boardMyColour[c][r] && board.getPermanent()[c][r] && anyAdjacentTiles(c, r, this.ink)) {
                         // if any are adjacent, check is passed and break out of the loops
                         flagAdjacent = true;
                         break;
@@ -101,7 +101,7 @@ public class Move {
                 if (r<0 || 26<=r) {continue;}
                 for (int c=column-1; c<=column+card.getWidth()+1; c++) {
                     if (c<0 || 9<=c) {continue;}
-                    if (boardMyColour[c][r] && checkAdjacentTiles(c, r, this.ink)) {
+                    if (boardMyColour[c][r] && anyAdjacentTiles(c, r, this.ink)) {
                         // if any are adjacent, check is passed and break out of the loops
                         flagAdjacent = true;
                         break;
@@ -115,7 +115,7 @@ public class Move {
         }
     }
 
-    private boolean checkAdjacentTiles(int column, int row, boolean[][] checkAgainst) {
+    private boolean anyAdjacentTiles(int column, int row, boolean[][] checkAgainst) {
         for (int r=row-1; r<=row+1; r++) {
             if (r<0 || 26<r) {continue;}
             for (int c=column-1; c<=column+1; c++) {
