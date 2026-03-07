@@ -31,7 +31,8 @@ public class Board {
                 if (yellow[c][r]) {space += 1;} 
                 if (blue[c][r]) {space += 2;}
                 if (permanent[c][r]) {space += 4;}
-                output += space;
+                if (space == 0) {output += "-";}
+                else {output += space;}
             }
             output += "\n";
         }

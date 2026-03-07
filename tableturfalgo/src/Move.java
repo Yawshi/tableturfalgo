@@ -1,13 +1,15 @@
 /**
  * Encode a move ie a card's ink pattern placed on the board.<br>
  * The ink pattern is stored as a mask over the board, for future operations.<br>
+ * Note that the {@code Move}'s special cost is the card's special cost if the move is a special attack and 0 otherwise.<br>
  * <br>
  * Getters: <br>
  * getInk()<br>
  * getPermanent()<br>
  * isYellow()<br>
  * isSpecial()<br>
- * getSize()
+ * getSize()<br>
+ * getCard()
  */
 public class Move {
     boolean[][] ink = new boolean[9][26];
@@ -15,15 +17,17 @@ public class Move {
     boolean isSpecial;
     boolean isYellow;
     int size;
+    Card card;
 
     /**
      * A null (pass) move. The "mask" is empty since it makes no changes to the board.
      * @param isYellow true if the move is played by yellow
      */
-    public Move(boolean isYellow) {
+    public Move(Card card, boolean isYellow) {
         this.isSpecial = false;
         this.isYellow = isYellow;
         this.size = 0;
+        this.card = card;
     }
 
     /**
@@ -68,6 +72,7 @@ public class Move {
         this.isSpecial = isSpecial;
         this.isYellow = isYellow;
         this.size = card.getSize();
+        this.card = card;
 
         boolean[][] boardMyColour;
         if (isYellow) {boardMyColour = board.getYellow();}
@@ -161,5 +166,9 @@ public class Move {
 
     public int getSize() {
         return this.size;
+    }
+
+    public Card getCard() {
+        return this.card;
     }
 }
