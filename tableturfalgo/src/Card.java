@@ -69,6 +69,10 @@ public class Card {
         return output;
     }
 
+    // public boolean equals() {
+
+    // }
+
     public boolean[][] getPattern() {
         return pattern;
     }

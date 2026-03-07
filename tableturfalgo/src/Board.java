@@ -1,5 +1,27 @@
 import java.util.ArrayList;
 
+/**
+ * Representation of the board. Each space on the board is stored as three booleans: <br>
+ * - {@code permanent} the space is either a special space or a grey clash wall <br>
+ * - {@code blue} the space is occupied by the blue player <br>
+ * - {@code yellow} the space is occupied by the yellow player <br>
+ * Each of these booleans are stored in separate 2D arrays to be interpreted and manipulated.
+ * When printed, each space is interpreted as a 3 digit binary, with {@code permanent} worth 4 and {@code yellow} worth 1. <br>
+ * <br>
+ * Getters:<br>
+ * getYellow()<br>
+ * getBlue()<br>
+ * getPermanent()<br>
+ * getEmpty()<br>
+ * getYellowSpecials()<br>
+ * getBlueSpecials()<br>
+ * getYellowOccupied()<br>
+ * getBlueOccupied()<br>
+ * <br>
+ * Methods:<br>
+ * getMoves()<br>
+ * updateBoard()
+ */
 public class Board {
     private boolean[][] yellow = new boolean[9][26];
     private boolean[][] blue = new boolean[9][26];
@@ -91,13 +113,14 @@ public class Board {
      * @see Move#Move()
      */
     public ArrayList<Move> getMoves(Card card, boolean isSpecial, boolean isYellow) {
+        Card baseCard = card;
         ArrayList<Move> output = new ArrayList<Move>();
         for (int x=0; x<4; x++) {
             // scan board and look for moves from this rotation
             for (int r=0; r<26-card.getHeight()+1; r++) {
                 for (int c=0; c<9-card.getWidth()+1; c++) {
                     try {
-                        output.add(new Move(this, card, c, r, isSpecial, isYellow));
+                        output.add(new Move(this, card, c, r, isSpecial, isYellow, baseCard));
                     } catch (InvalidMoveException e) {
                         continue;
                     }
@@ -209,9 +232,9 @@ public class Board {
 
     private boolean anyAdjacentTiles(int column, int row, boolean[][] checkAgainst) {
         for (int r=row-1; r<=row+1; r++) {
-            if (r<0 || 26<r) {continue;}
+            if (r<0 || 26<=r) {continue;}
             for (int c=column-1; c<=column+1; c++) {
-                if (c<0 || 9<c) {continue;}
+                if (c<0 || 9<=c) {continue;}
                 if (checkAgainst[c][r]) {
                     return true;
                 }

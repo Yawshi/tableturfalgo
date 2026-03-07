@@ -58,7 +58,7 @@ public class GameState {
     }
 
     /**
-     * Resolves and performs end of turn actions, including: <br>
+     * Resolves and performs all end of turn actions, including: <br>
      * - update the board to lay out ink patterns placed this turn <br>
      * - update special points held by both players <br>
      * - remove the played card from both players' hands <br>
@@ -73,8 +73,8 @@ public class GameState {
 
         if (yellowMove.isSpecial()) {yellowSpecialsSpent += yellowMove.getCard().getSpecialCost();}
         if (blueMove.isSpecial()) {blueSpecialsSpent += blueMove.getCard().getSpecialCost();}
-        yellowHand.remove(yellowMove.getCard());
-        blueHand.remove(blueMove.getCard());
+        yellowHand.remove(yellowMove.getBaseCard());
+        blueHand.remove(blueMove.getBaseCard());
         drawCard();
         yellowMove = null;
         blueMove = null;

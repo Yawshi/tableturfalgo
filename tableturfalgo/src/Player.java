@@ -41,7 +41,5 @@ public abstract class Player {
         return output;
     }
 
-    public abstract Move chooseMove();
-
-    // TODO: figure out how to track stats uuhhhhhhhhhhhhhhh
+    public abstract Move chooseMove(ArrayList<Move> moveList);
 }

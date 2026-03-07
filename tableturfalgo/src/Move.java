@@ -9,7 +9,8 @@
  * isYellow()<br>
  * isSpecial()<br>
  * getSize()<br>
- * getCard()
+ * getCard()<br>
+ * getBaseCard()
  */
 public class Move {
     boolean[][] ink = new boolean[9][26];
@@ -17,7 +18,7 @@ public class Move {
     boolean isSpecial;
     boolean isYellow;
     int size;
-    Card card;
+    Card card, baseCard;
 
     /**
      * A null (pass) move. The "mask" is empty since it makes no changes to the board.
@@ -28,6 +29,7 @@ public class Move {
         this.isYellow = isYellow;
         this.size = 0;
         this.card = card;
+        this.baseCard = card;
     }
 
     /**
@@ -45,9 +47,10 @@ public class Move {
      * @param row row index (0-25) of the tile where the bottom left corner of the card's bounding box is placed
      * @param isSpecial true if the move is a special attack
      * @param isYellow true if the move is played by yellow
+     * @param baseCard pointer to unmodified card in hand
      * @throws InvalidMoveException if the move is invalid
      */
-    public Move(Board board, Card card, int column, int row, boolean isSpecial, boolean isYellow) throws InvalidMoveException {
+    public Move(Board board, Card card, int column, int row, boolean isSpecial, boolean isYellow, Card baseCard) throws InvalidMoveException {
         // check if the ink pattern is out of bounds
         if ((column+card.getWidth() > 9) || (row+card.getHeight() > 26)) {
             throw new InvalidMoveException("Ink pattern placed is out of bounds.");
@@ -73,6 +76,7 @@ public class Move {
         this.isYellow = isYellow;
         this.size = card.getSize();
         this.card = card;
+        this.baseCard = baseCard;
 
         boolean[][] boardMyColour;
         if (isYellow) {boardMyColour = board.getYellow();}
@@ -122,9 +126,9 @@ public class Move {
 
     private boolean anyAdjacentTiles(int column, int row, boolean[][] checkAgainst) {
         for (int r=row-1; r<=row+1; r++) {
-            if (r<0 || 26<r) {continue;}
+            if (r<0 || 26<=r) {continue;}
             for (int c=column-1; c<=column+1; c++) {
-                if (c<0 || 9<c) {continue;}
+                if (c<0 || 9<=c) {continue;}
                 if (checkAgainst[c][r]) {
                     return true;
                 }
@@ -170,5 +174,9 @@ public class Move {
 
     public Card getCard() {
         return this.card;
+    }
+
+    public Card getBaseCard() {
+        return this.baseCard;
     }
 }
