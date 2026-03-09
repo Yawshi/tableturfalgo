@@ -1,10 +1,14 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * When created, runs a full game of Tableturf, played with the two specified game agents.
+ */
 public class GameMaster {
     private GameState game;
     Player yellowPlayer, bluePlayer;
 
-    public GameMaster(Player yellowPlayer, Player bluePlayer) {
+    public GameMaster(Player yellowPlayer, Player bluePlayer, String timestamp) throws IOException {
         ArrayList<Card> deck = makeStarterDeck();
         ArrayList<Card> yellowDeck = (ArrayList<Card>) deck.clone();
         ArrayList<Card> blueDeck = (ArrayList<Card>) deck.clone();
@@ -18,6 +22,9 @@ public class GameMaster {
             game.endTurn();
             System.out.println(game);
         }
+
+        String msg = timestamp + ": " + game.getBoard().getYellowOccupied() + " - " + game.getBoard().getBlueOccupied();
+        WriteToLog.write("gameend.txt", msg);
     }
 
     private ArrayList<Card> makeStarterDeck() {

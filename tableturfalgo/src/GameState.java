@@ -1,5 +1,21 @@
 import java.util.ArrayList;
 
+/**
+ * Represents a game state, storing info on the board and each player's possessions.
+ * 
+ * Getters:
+ * getBoard()
+ * getTurnsRemaining()
+ * getYellowSpecialsHeld()
+ * getBlueSpecialsHeld()
+ * getYellowHand()
+ * getBlueHand()
+ * 
+ * Methods:
+ * endTurn()
+ * setYellowMove()
+ * setBlueMove()
+ */
 public class GameState {
     private Board board;
     private int turnsRemaining, yellowSpecialsSpent, blueSpecialsSpent;
