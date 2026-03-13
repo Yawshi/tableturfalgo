@@ -7,8 +7,8 @@ public class App {
         // the GameMaster and each play agent writes to its own log (text file)
         String timestamp = Instant.now().toString();
         
-        Player yellowPlayer = new RandomDummyPlayer();
-        Player bluePlayer = new RandomDummyPlayer();
+        Player yellowPlayer = new AlphaBetaAlgo(true, timestamp, 3, (float) 1.1, (float) 2.01, (float) 1.05);
+        Player bluePlayer = new AlphaBetaAlgo(false, timestamp, 1, (float) 1.1, (float) 2.01, (float) 1.05);
         new GameMaster(yellowPlayer, bluePlayer, timestamp);
     }
 }

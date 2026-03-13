@@ -45,6 +45,25 @@ public class Board {
         blueOccupiedCount = 1;
     }
 
+    /**
+     * Generate a clone of the given board.
+     * @param board board to be cloned
+     */
+    public Board(Board board) {
+        for (int c=0; c<9; c++) {
+            this.yellow[c] = board.getYellow()[c].clone();
+            this.blue[c] = board.getBlue()[c].clone();
+            this.permanent[c] = board.getPermanent()[c].clone();
+        }
+        updateEmpty();
+        this.yellowSpecialsActivated = board.yellowSpecialsActivated;
+        this.blueSpecialsActivated = board.blueSpecialsActivated;
+        this.yellowOccupiedCount = board.yellowOccupiedCount;
+        this.blueOccupiedCount = board.blueOccupiedCount;
+        this.yellowTurnsPassed = board.yellowTurnsPassed;
+        this.blueTurnsPassed = board.blueTurnsPassed;
+    }
+
     public String toString() {
         String output = "";
         for (int r=0; r<26; r++) {
@@ -117,7 +136,9 @@ public class Board {
         ArrayList<Move> output = new ArrayList<Move>();
         for (int x=0; x<4; x++) {
             // scan board and look for moves from this rotation
-            for (int r=0; r<26-card.getHeight()+1; r++) {
+            for (int i=0; i<26-card.getHeight()+1; i++) {
+                int r = i;
+                if (!isYellow) {r = 26-card.getHeight() - i;}
                 for (int c=0; c<9-card.getWidth()+1; c++) {
                     try {
                         output.add(new Move(this, card, c, r, isSpecial, isYellow, baseCard));

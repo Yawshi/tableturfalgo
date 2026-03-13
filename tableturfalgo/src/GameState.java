@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * getTurnsRemaining()
  * getYellowSpecialsHeld()
  * getBlueSpecialsHeld()
+ * getYellowDeck()
+ * getBlueDeck()
  * getYellowHand()
  * getBlueHand()
  * 
@@ -37,13 +39,35 @@ public class GameState {
         this.blueDeck = blueDeckStart;
         this.yellowHand = new ArrayList<Card>();
         this.blueHand = new ArrayList<Card>();
-        drawCard();
-        drawCard();
-        drawCard();
-        drawCard();
+        drawCards();
+        drawCards();
+        drawCards();
+        drawCards();
+
+        this.yellowMove = null;
+        this.blueMove = null;
     }
 
-    private void drawCard() {
+    /**
+     * Generate a cloned game state, for algorithm manipulation and evaluation purposes.
+     * @param prevState game state to be cloned
+     */
+    public GameState(GameState prevState) {
+        this.board = new Board(prevState.getBoard());
+        this.turnsRemaining = prevState.getTurnsRemaining();
+        this.yellowSpecialsSpent = prevState.yellowSpecialsSpent;
+        this.blueSpecialsSpent = prevState.blueSpecialsSpent;
+
+        this.yellowDeck = (ArrayList<Card>) prevState.yellowDeck.clone();
+        this.blueDeck = (ArrayList<Card>) prevState.blueDeck.clone();
+        this.yellowHand = (ArrayList<Card>) prevState.yellowHand.clone();
+        this.blueHand = (ArrayList<Card>) prevState.blueHand.clone();
+
+        this.yellowMove = prevState.yellowMove;
+        this.blueMove = prevState.blueMove;
+    }
+
+    private void drawCards() {
         Card yellowCard = this.yellowDeck.remove(0);
         for (int i=0; i<=yellowHand.size(); i++) {
             if (i == yellowHand.size()) {
@@ -51,7 +75,7 @@ public class GameState {
                 break;
             }
             else {
-                if (yellowCard.getSize() < yellowHand.get(i).getSize()) {
+                if (yellowCard.getSize() > yellowHand.get(i).getSize()) {
                     yellowHand.add(i, yellowCard);
                     break;
                 }
@@ -65,8 +89,33 @@ public class GameState {
                 break;
             }
             else {
-                if (blueCard.getSize() < blueHand.get(i).getSize()) {
+                if (blueCard.getSize() > blueHand.get(i).getSize()) {
                     blueHand.add(i, blueCard);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Finds and draws a specific card from a player's deck into their hand.
+     * @param card card in question
+     * @param isYellow player in question
+     */
+    public void drawCardFromDeck(Card card, boolean isYellow) {
+        if (isYellow) {
+            yellowDeck.remove(card);
+            for (int i=0; i<yellowHand.size(); i++) {
+                if (card.getSize() > yellowHand.get(i).getSize()) {
+                    yellowHand.add(i, card);
+                    break;
+                }
+            }
+        } else {
+            blueDeck.remove(card);
+            for (int i=0; i<blueHand.size(); i++) {
+                if (card.getSize() > blueHand.get(i).getSize()) {
+                    blueHand.add(i, card);
                     break;
                 }
             }
@@ -83,23 +132,40 @@ public class GameState {
      * - reset {@code yellowMove} and {@code blueMove} to null for a new turn
      */
     public void endTurn() {
+        endTurn(true);
+    }
+
+    /**
+     * Resolves and performs most/all end of turn actions, including: <br>
+     * - update the board to lay out ink patterns placed this turn <br>
+     * - update special points held by both players <br>
+     * - remove the played card from both players' hands <br>
+     * - decrement the remaining turn counter <br>
+     * - reset {@code yellowMove} and {@code blueMove} to null for a new turn <br>
+     * - (optional) draw a card from each players' decks into their hands 
+     * @param drawcards whether or not to draw a card into each player's hands (set to false for algo evals)
+     */
+    public void endTurn(boolean drawcards) {
         board.updateBoard(yellowMove, blueMove);
         turnsRemaining -= 1;
         if (turnsRemaining <= 0) {return;}
 
         if (yellowMove.isSpecial()) {yellowSpecialsSpent += yellowMove.getCard().getSpecialCost();}
         if (blueMove.isSpecial()) {blueSpecialsSpent += blueMove.getCard().getSpecialCost();}
-        yellowHand.remove(yellowMove.getBaseCard());
-        blueHand.remove(blueMove.getBaseCard());
-        drawCard();
+
+        if (!yellowHand.remove(yellowMove.getBaseCard())) {yellowDeck.remove(yellowMove.getBaseCard());}
+        if (!blueHand.remove(blueMove.getBaseCard())) {blueDeck.remove(blueMove.getBaseCard());}
+
         yellowMove = null;
         blueMove = null;
+
+        if (drawcards) {drawCards();}
     }
 
     public String toString() {
         String output = board.toString();
-        output += "t=" + turnsRemaining + ": " + board.getYellowOccupied() + "(" + board.getYellowSpecials() 
-        + ") - " + board.getBlueOccupied() + "(" + board.getBlueSpecials() +")\n";
+        output += "t=" + turnsRemaining + ": " + board.getYellowOccupied() + "(" + this.getYellowSpecialsHeld() 
+        + ") - " + board.getBlueOccupied() + "(" + this.getBlueSpecialsHeld() +")\n";
         return output;
     }
 
@@ -117,6 +183,14 @@ public class GameState {
 
     public int getBlueSpecialsHeld() {
         return board.getBlueSpecials() - blueSpecialsSpent;
+    }
+
+    public ArrayList<Card> getYellowDeck() {
+        return yellowDeck;
+    }
+
+    public ArrayList<Card> getBlueDeck() {
+        return blueDeck;
     }
 
     public ArrayList<Card> getYellowHand() {

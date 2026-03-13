@@ -17,8 +17,8 @@ public class GameMaster {
         System.out.println(game);
 
         while (game.getTurnsRemaining() > 0) {
-            game.setYellowMove(yellowPlayer.chooseMove(yellowPlayer.getAllMoves(game, true)));
-            game.setBlueMove(bluePlayer.chooseMove(bluePlayer.getAllMoves(game, false)));
+            game.setYellowMove(yellowPlayer.chooseMove(game));
+            game.setBlueMove(bluePlayer.chooseMove(game));
             game.endTurn();
             System.out.println(game);
         }

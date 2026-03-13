@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -14,13 +15,13 @@ public abstract class Player {
      * - if the card can be played as a special attack, those moves are listed after the card's regular moves (if any) before the next card's moves <br>
      * - null/pass moves for discarding each card are always appended at the end of the list <br>
      * @param gameState game state to be evaluated
-     * @param isYellow the player in question
+     * @param imYellow if the player is yellow
      * @return list of moves available
      */
-    public ArrayList<Move> getAllMoves(GameState gameState, boolean isYellow) {
+    public ArrayList<Move> getAllMyMoves(GameState gameState, boolean imYellow) {
         ArrayList<Card> myHand;
         int mySpecialsHeld;
-        if (isYellow) {
+        if (imYellow) {
             myHand = gameState.getYellowHand();
             mySpecialsHeld = gameState.getYellowSpecialsHeld();
         } else {
@@ -30,16 +31,57 @@ public abstract class Player {
         
         ArrayList<Move> output = new ArrayList<Move>();
         for (Card card : myHand) {
-            output.addAll(gameState.getBoard().getMoves(card, false, isYellow));
+            output.addAll(gameState.getBoard().getMoves(card, false, imYellow));
             if (card.getSpecialCost() <= mySpecialsHeld) {
-                output.addAll(gameState.getBoard().getMoves(card, true, isYellow));
+                output.addAll(gameState.getBoard().getMoves(card, true, imYellow));
             }
         }
         for (Card card : myHand) {
-            output.add(new Move(card, isYellow));
+            output.add(new Move(card, imYellow));
         }
         return output;
     }
 
-    public abstract Move chooseMove(ArrayList<Move> moveList);
+    public ArrayList<Move> getAllOpponentMoves(GameState gameState, boolean imYellow) {
+        ArrayList<Card> opponentCards;
+        int opponentSpecialsHeld;
+        if (imYellow) {
+            // collect both opponent's hand and deck, and sort in order of size
+            opponentCards = (ArrayList<Card>) gameState.getBlueHand().clone();
+            for (Card card : gameState.getBlueDeck()) {
+                for (int i=0; i<opponentCards.size(); i++) {
+                    if (card.getSize() > opponentCards.get(i).getSize()) {
+                        opponentCards.add(i, card);
+                        break;
+                    }
+                }
+            }
+            opponentSpecialsHeld = gameState.getBlueSpecialsHeld();
+        } else {
+            opponentCards = (ArrayList<Card>) gameState.getYellowHand().clone();
+            for (Card card : gameState.getYellowDeck()) {
+                for (int i=0; i<opponentCards.size(); i++) {
+                    if (card.getSize() > opponentCards.get(i).getSize()) {
+                        opponentCards.add(i, card);
+                        break;
+                    }
+                }
+            }
+            opponentSpecialsHeld = gameState.getYellowSpecialsHeld();
+        }
+
+        ArrayList<Move> output = new ArrayList<Move>();
+        for (Card card : opponentCards) {
+            output.addAll(gameState.getBoard().getMoves(card, false, !imYellow));
+            if (card.getSpecialCost() <= opponentSpecialsHeld) {
+                output.addAll(gameState.getBoard().getMoves(card, true, !imYellow));
+            }
+        }
+        for (Card card : opponentCards) {
+            output.add(new Move(card, !imYellow));
+        }
+        return output;
+    }
+
+    public abstract Move chooseMove(GameState gameState) throws IOException;
 }
