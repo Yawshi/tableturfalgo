@@ -9,7 +9,7 @@ public class WriteToLog {
      * Append a message to a text file. This automatically adds a "\n" to the end of the message.
      * @param filename text file to be written to
      * @param msg message to be written
-     * @throws IOException uhhhhhhhh
+     * @throws IOException if an error occurs when writing to the text file
      */
     public static void write(String filename, String msg) throws IOException {
         try (FileWriter pointer = new FileWriter(filename,true)) {

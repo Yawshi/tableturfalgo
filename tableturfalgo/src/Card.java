@@ -1,17 +1,5 @@
 /**
- * Representation of a single card, in hand or in deck.<br>
- * <br>
- * Getters: <br>
- * > getPattern()<br>
- * > getPermanent()<br>
- * > getSize()<br>
- * > getSpecialCost()<br>
- * > getWidth()<br>
- * > getHeight()<br>
- * <br>
- * Methods:<br>
- * > toString()<br>
- * > rotateCard()
+ * Representation of a single card, in hand or in deck.
  */
 public class Card {
     private boolean[][] pattern;
@@ -68,10 +56,6 @@ public class Card {
         }
         return output;
     }
-
-    // public boolean equals() {
-
-    // }
 
     public boolean[][] getPattern() {
         return pattern;

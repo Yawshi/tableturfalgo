@@ -2,21 +2,6 @@ import java.util.ArrayList;
 
 /**
  * Represents a game state, storing info on the board and each player's possessions.
- * 
- * Getters:
- * getBoard()
- * getTurnsRemaining()
- * getYellowSpecialsHeld()
- * getBlueSpecialsHeld()
- * getYellowDeck()
- * getBlueDeck()
- * getYellowHand()
- * getBlueHand()
- * 
- * Methods:
- * endTurn()
- * setYellowMove()
- * setBlueMove()
  */
 public class GameState {
     private Board board;
@@ -123,6 +108,29 @@ public class GameState {
     }
 
     /**
+     * Finds and draws the indexed card in a player's deck into their hand.
+     * @param index index of card in the deck (list of cards)
+     * @param isYellow player in question
+     */
+    public void drawCardFromDeck(int index, boolean isYellow) {
+        Card card;
+        if (isYellow) {card = this.getYellowDeck().get(index);}
+        else {card = this.getBlueDeck().get(index);}
+        this.drawCardFromDeck(card, isYellow);
+    }
+
+    /**
+     * Draws a random card from a player's deck into their hand.
+     * @param isYellow player in question
+     */
+    public void drawRandomCardFromDeck(boolean isYellow) {
+        int deckSize;
+        if (isYellow) {deckSize = this.getYellowDeck().size();}
+        else {deckSize = this.getBlueDeck().size();}
+        this.drawCardFromDeck((int) Math.floor(Math.random()*deckSize), isYellow);
+    }
+
+    /**
      * Resolves and performs all end of turn actions, including: <br>
      * - update the board to lay out ink patterns placed this turn <br>
      * - update special points held by both players <br>
@@ -130,8 +138,9 @@ public class GameState {
      * - draw a card from each players' decks into their hands <br>
      * - decrement the remaining turn counter <br>
      * - reset {@code yellowMove} and {@code blueMove} to null for a new turn
+     * @throws InvalidEndTurnStateException if the state does not have both player's moves decided
      */
-    public void endTurn() {
+    public void endTurn() throws InvalidEndTurnStateException {
         endTurn(true);
     }
 
@@ -144,8 +153,12 @@ public class GameState {
      * - reset {@code yellowMove} and {@code blueMove} to null for a new turn <br>
      * - (optional) draw a card from each players' decks into their hands 
      * @param drawcards whether or not to draw a card into each player's hands (set to false for algo evals)
+     * @throws InvalidEndTurnStateException if the state does not have both player's moves decided
      */
-    public void endTurn(boolean drawcards) {
+    public void endTurn(boolean drawcards) throws InvalidEndTurnStateException {
+        if (!this.hasBothMovesAssigned()) {
+            throw new InvalidEndTurnStateException();
+        }
         board.updateBoard(yellowMove, blueMove);
         turnsRemaining -= 1;
         if (turnsRemaining <= 0) {return;}
@@ -207,5 +220,14 @@ public class GameState {
 
     public void setBlueMove(Move blueMove) {
         this.blueMove = blueMove;
+    }
+
+    /**
+     * Checks if both players have moves decided at this game state. If true, {@code endTurn()} may be run.
+     * @return true if both players have moves assigned
+     * @see GameState#endTurn()
+     */
+    public boolean hasBothMovesAssigned() {
+        return (this.yellowMove != null && this.blueMove != null);
     }
 }

@@ -1,16 +1,6 @@
 /**
- * Encode a move ie a card's ink pattern placed on the board.<br>
- * The ink pattern is stored as a mask over the board, for future operations.<br>
- * Note that the {@code Move}'s special cost is the card's special cost if the move is a special attack and 0 otherwise.<br>
- * <br>
- * Getters: <br>
- * getInk()<br>
- * getPermanent()<br>
- * isYellow()<br>
- * isSpecial()<br>
- * getSize()<br>
- * getCard()<br>
- * getBaseCard()
+ * Encode a move ie a card's ink pattern placed on the board.
+ * The ink pattern is stored as a mask over the board, for future operations.
  */
 public class Move {
     boolean[][] ink = new boolean[9][26];

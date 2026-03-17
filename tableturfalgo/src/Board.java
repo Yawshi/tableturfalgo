@@ -6,21 +6,8 @@ import java.util.ArrayList;
  * - {@code blue} the space is occupied by the blue player <br>
  * - {@code yellow} the space is occupied by the yellow player <br>
  * Each of these booleans are stored in separate 2D arrays to be interpreted and manipulated.
- * When printed, each space is interpreted as a 3 digit binary, with {@code permanent} worth 4 and {@code yellow} worth 1. <br>
- * <br>
- * Getters:<br>
- * getYellow()<br>
- * getBlue()<br>
- * getPermanent()<br>
- * getEmpty()<br>
- * getYellowSpecials()<br>
- * getBlueSpecials()<br>
- * getYellowOccupied()<br>
- * getBlueOccupied()<br>
- * <br>
- * Methods:<br>
- * getMoves()<br>
- * updateBoard()
+ * In other words, the board is stored as a 3D boolean array with dimensions 9*26*3. <br>
+ * When printed, each space is interpreted as a 3 digit binary, with {@code permanent} worth 4 and {@code yellow} worth 1.
  */
 public class Board {
     private boolean[][] yellow = new boolean[9][26];
@@ -89,38 +76,6 @@ public class Board {
                 this.empty[c][r] = !(this.yellow[c][r] || this.blue[c][r] || this.permanent[c][r]);
             }
         }
-    }
-
-    public boolean[][] getYellow() {
-        return this.yellow;
-    }
-
-    public boolean[][] getBlue() {
-        return this.blue;
-    }
-
-    public boolean[][] getPermanent() {
-        return this.permanent;
-    }
-
-    public boolean[][] getEmpty() {
-        return this.empty;
-    }
-
-    public int getYellowSpecials() {
-        return this.yellowSpecialsActivated + this.yellowTurnsPassed;
-    }
-
-    public int getBlueSpecials() {
-        return this.blueSpecialsActivated + this.blueTurnsPassed;
-    }
-
-    public int getYellowOccupied() {
-        return this.yellowOccupiedCount;
-    }
-
-    public int getBlueOccupied() {
-        return this.blueOccupiedCount;
     }
 
     /**
@@ -262,5 +217,37 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public boolean[][] getYellow() {
+        return this.yellow;
+    }
+
+    public boolean[][] getBlue() {
+        return this.blue;
+    }
+
+    public boolean[][] getPermanent() {
+        return this.permanent;
+    }
+
+    public boolean[][] getEmpty() {
+        return this.empty;
+    }
+
+    public int getYellowSpecials() {
+        return this.yellowSpecialsActivated + this.yellowTurnsPassed;
+    }
+
+    public int getBlueSpecials() {
+        return this.blueSpecialsActivated + this.blueTurnsPassed;
+    }
+
+    public int getYellowOccupied() {
+        return this.yellowOccupiedCount;
+    }
+
+    public int getBlueOccupied() {
+        return this.blueOccupiedCount;
     }
 }

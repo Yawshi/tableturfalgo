@@ -17,7 +17,7 @@ public class AlphaBetaAlgo extends Player {
     }
 
     @Override
-    public Move chooseMove(GameState gameState) throws IOException {
+    public Move chooseMove(GameState gameState) throws IOException, InvalidEndTurnStateException {
         ArrayList<Move> moveList = this.getAllMyMoves(gameState, imYellow);
         float value = -100;
         Move output = null;
@@ -42,7 +42,7 @@ public class AlphaBetaAlgo extends Player {
         return output;
     }
 
-    private float maxFunc(GameState maxState, int depth, float alpha, float beta) throws IOException {
+    private float maxFunc(GameState maxState, int depth, float alpha, float beta) throws IOException, InvalidEndTurnStateException {
         ArrayList<Move> moveList = this.getAllMyMoves(maxState, imYellow);
         float value = -100;
 
@@ -68,7 +68,7 @@ public class AlphaBetaAlgo extends Player {
         return value;
     }
 
-    private float minFunc(GameState minState, int depth, float alpha, float beta) throws IOException {
+    private float minFunc(GameState minState, int depth, float alpha, float beta) throws IOException, InvalidEndTurnStateException {
         ArrayList<Move> moveList = this.getAllOpponentMoves(minState, imYellow);
         float value = 100;
 
@@ -93,7 +93,7 @@ public class AlphaBetaAlgo extends Player {
         return value;
     }
 
-    private float endFunc(GameState endState, int depth, float alpha, float beta) throws IOException {
+    private float endFunc(GameState endState, int depth, float alpha, float beta) throws IOException, InvalidEndTurnStateException {
         endState.endTurn(false);
 
         // check if this is a terminating node on the tree

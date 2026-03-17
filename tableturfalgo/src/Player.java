@@ -2,11 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Base abstract class for all game playing algorithms for the project. <br>
- * <br>
- * Methods: <br>
- * > getAllMoves() <br>
- * > chooseMove() *abstract* 
+ * Base abstract class for all game playing algorithms for the project.
  */
 public abstract class Player {
     /**
@@ -42,6 +38,16 @@ public abstract class Player {
         return output;
     }
 
+    /**
+     * Generates a list of moves available to the opponent at a certain game state: <br>
+     * - the list includes cards from both the opponent's hand and their deck <br>
+     * - the moves are ordered from biggest to smallest card size <br>
+     * - if the card can be played as a special attack, those moves are listed after the card's regular moves (if any) before the next card's moves <br>
+     * - null/pass moves for discarding each card are always appended at the end of the list <br>
+     * @param gameState game state to be evaluated
+     * @param imYellow if the player is yellow
+     * @return list of moves available
+     */
     public ArrayList<Move> getAllOpponentMoves(GameState gameState, boolean imYellow) {
         ArrayList<Card> opponentCards;
         int opponentSpecialsHeld;
@@ -83,5 +89,12 @@ public abstract class Player {
         return output;
     }
 
-    public abstract Move chooseMove(GameState gameState) throws IOException;
+    /**
+     * Prompt the algorithm to decide on a move at a certain game state.
+     * @param gameState game state to be evaluated
+     * @return the decided move
+     * @throws IOException if an error occurs when writing to the algorithm's log files
+     * @throws InvalidEndTurnStateException if an error occurs when attempting to perform end of turn actions
+     */
+    public abstract Move chooseMove(GameState gameState) throws IOException, InvalidEndTurnStateException;
 }

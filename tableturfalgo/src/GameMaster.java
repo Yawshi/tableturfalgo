@@ -2,13 +2,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * When created, runs a full game of Tableturf, played with the two specified game agents.
+ * When created, runs a full game of Tableturf, played with the two specified game agents. <br>
+ * Prints game stats to a log file named "gameend.txt".
  */
 public class GameMaster {
     private GameState game;
     Player yellowPlayer, bluePlayer;
 
-    public GameMaster(Player yellowPlayer, Player bluePlayer, String timestamp) throws IOException {
+    public GameMaster(Player yellowPlayer, Player bluePlayer, String timestamp) throws IOException, InvalidEndTurnStateException {
         ArrayList<Card> deck = makeStarterDeck();
         ArrayList<Card> yellowDeck = (ArrayList<Card>) deck.clone();
         ArrayList<Card> blueDeck = (ArrayList<Card>) deck.clone();
