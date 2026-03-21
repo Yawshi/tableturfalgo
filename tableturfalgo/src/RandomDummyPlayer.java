@@ -6,6 +6,11 @@ import java.util.ArrayList;
 public class RandomDummyPlayer extends Player {
     private boolean imYellow, playForOpponent;
 
+    /**
+     * Initialise a random dummy player that picks random moves from its list of available moves.
+     * @param imYellow if this plays for yellow
+     * @param playForOpponent if this picks random opponent moves instead
+     */
     public RandomDummyPlayer(boolean imYellow, boolean playForOpponent) {
         this.imYellow = imYellow;
         this.playForOpponent = playForOpponent;
@@ -18,7 +23,6 @@ public class RandomDummyPlayer extends Player {
         } else {
             return chooseMove(this.getAllOpponentMoves(gameState, imYellow));
         }
-        
     }
 
     /**

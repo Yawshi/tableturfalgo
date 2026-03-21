@@ -1,0 +1,302 @@
+2026-03-18T08:08:41.430540Zi made a choice
+2026-03-18T08:08:41.430540Zi made a choice
+2026-03-18T08:08:41.430540Zi made a choice
+2026-03-18T08:08:41.430540Zi made a choice
+2026-03-18T08:08:41.430540Zi made a choice
+2026-03-18T08:12:49.117663Zi made a choice
+2026-03-18T08:12:49.117663Zi made a choice
+2026-03-18T08:16:46.533238Zi made a choice
+2026-03-18T08:17:47.627052Zi made a choice
+2026-03-18T08:17:47.627052Zi made a choice
+2026-03-18T08:17:47.627052Zi made a choice
+2026-03-18T08:17:47.627052Zi made a choice
+2026-03-18T08:17:47.627052Zi made a choice
+2026-03-18T08:19:36.347542Zi made a choice
+2026-03-18T08:19:36.347542Zi made a choice
+2026-03-18T08:22:20.710544Zi made a choice
+2026-03-18T08:24:30.827564Zi made a choice
+2026-03-18T08:27:07.931569Zi made a choice
+2026-03-18T08:29:15.230435Zi made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T08:30:25.142406Z i made a choice
+2026-03-18T15:52:24.833997Z i made a choice
+2026-03-18T15:52:24.833997Z i made a choice
+2026-03-18T15:52:47.434854Z i made a choice
+2026-03-18T15:52:47.434854Z i made a choice
+2026-03-18T15:52:47.434854Z i made a choice
+2026-03-18T15:52:47.434854Z i made a choice
+2026-03-18T15:52:47.434854Z i made a choice
+2026-03-18T15:52:47.434854Z i made a choice
+2026-03-18T15:52:47.434854Z i made a choice
+2026-03-18T19:03:05.715356Z Y: t=12 sims=34
+2026-03-18T19:03:05.715356Z Y: t=11 sims=44
+2026-03-18T19:03:05.715356Z Y: t=10 sims=52
+2026-03-18T19:03:05.715356Z Y: t=9 sims=59
+2026-03-18T19:03:05.715356Z Y: t=8 sims=62
+2026-03-18T19:03:05.715356Z Y: t=7 sims=79
+2026-03-18T19:03:05.715356Z Y: t=6 sims=106
+2026-03-18T19:03:05.715356Z Y: t=5 sims=132
+2026-03-18T19:03:05.715356Z Y: t=4 sims=184
+2026-03-18T19:03:05.715356Z Y: t=3 sims=285
+2026-03-18T19:03:05.715356Z Y: t=2 sims=428
+2026-03-18T19:03:05.715356Z Y: t=1 sims=1142
+2026-03-19T00:24:05.576286Z Y: t=12 plays=11
+2026-03-19T00:24:05.576286Z Y: t=11 plays=14
+2026-03-19T00:24:05.576286Z Y: t=10 plays=18
+2026-03-19T00:24:05.576286Z Y: t=9 plays=20
+2026-03-19T00:24:05.576286Z Y: t=8 plays=24
+2026-03-19T00:24:05.576286Z Y: t=7 plays=32
+2026-03-19T00:24:05.576286Z Y: t=6 plays=41
+2026-03-19T00:24:05.576286Z Y: t=5 plays=55
+2026-03-19T00:24:05.576286Z Y: t=4 plays=63
+2026-03-19T00:24:05.576286Z Y: t=3 plays=84
+2026-03-19T00:24:05.576286Z Y: t=2 plays=145
+2026-03-19T00:24:05.576286Z Y: t=1 plays=349
+2026-03-19T00:25:48.374049Z Y: t=12 plays=24
+2026-03-19T00:25:48.374049Z Y: t=11 plays=27
+2026-03-19T00:25:48.374049Z Y: t=10 plays=31
+2026-03-19T00:25:48.374049Z Y: t=9 plays=38
+2026-03-19T00:25:48.374049Z Y: t=8 plays=47
+2026-03-19T00:25:48.374049Z Y: t=7 plays=60
+2026-03-19T00:25:48.374049Z Y: t=6 plays=75
+2026-03-19T00:25:48.374049Z Y: t=5 plays=82
+2026-03-19T00:25:48.374049Z Y: t=4 plays=98
+2026-03-19T00:25:48.374049Z Y: t=3 plays=166
+2026-03-19T00:25:48.374049Z Y: t=2 plays=282
+2026-03-19T00:25:48.374049Z Y: t=1 plays=656
+2026-03-19T00:33:25.531711Z Y: t=12 plays=23
+2026-03-19T00:33:25.531711Z B: t=12 plays=24
+2026-03-19T00:33:25.531711Z Y: t=11 plays=25
+2026-03-19T00:33:25.531711Z B: t=11 plays=30
+2026-03-19T00:33:25.531711Z Y: t=10 plays=35
+2026-03-19T00:33:25.531711Z B: t=10 plays=35
+2026-03-19T00:33:25.531711Z Y: t=9 plays=39
+2026-03-19T00:33:25.531711Z B: t=9 plays=39
+2026-03-19T00:33:25.531711Z Y: t=8 plays=45
+2026-03-19T00:33:25.531711Z B: t=8 plays=51
+2026-03-19T00:33:25.531711Z Y: t=7 plays=58
+2026-03-19T00:33:25.531711Z B: t=7 plays=56
+2026-03-19T00:33:25.531711Z Y: t=6 plays=62
+2026-03-19T00:33:25.531711Z B: t=6 plays=78
+2026-03-19T00:33:25.531711Z Y: t=5 plays=88
+2026-03-19T00:33:25.531711Z B: t=5 plays=97
+2026-03-19T00:33:25.531711Z Y: t=4 plays=117
+2026-03-19T00:33:25.531711Z B: t=4 plays=131
+2026-03-19T00:33:25.531711Z Y: t=3 plays=170
+2026-03-19T00:33:25.531711Z B: t=3 plays=198
+2026-03-19T00:33:25.531711Z Y: t=2 plays=213
+2026-03-19T00:33:25.531711Z B: t=2 plays=347
+2026-03-19T00:33:25.531711Z Y: t=1 plays=684
+2026-03-19T00:41:04.854182Z Y: t=12 plays=23 most=1
+2026-03-19T00:41:04.854182Z B: t=12 plays=26 most=1
+2026-03-19T00:41:04.854182Z Y: t=11 plays=31 most=1
+2026-03-19T00:42:19.484834Z Y: t=12 plays=77 most=1
+2026-03-19T00:42:19.484834Z Y: t=11 plays=73 most=1
+2026-03-19T00:42:19.484834Z Y: t=10 plays=95 most=1
+2026-03-19T00:42:19.484834Z Y: t=9 plays=101 most=1
+2026-03-19T00:42:19.484834Z Y: t=8 plays=125 most=1
+2026-03-19T00:42:19.484834Z Y: t=7 plays=185 most=1
+2026-03-19T00:42:19.484834Z Y: t=6 plays=271 most=1
+2026-03-19T00:42:19.484834Z Y: t=5 plays=321 most=1
+2026-03-19T00:42:19.484834Z Y: t=4 plays=441 most=1
+2026-03-19T00:42:19.484834Z Y: t=3 plays=569 most=1
+2026-03-19T00:42:19.484834Z Y: t=2 plays=951 most=1
+2026-03-19T00:42:19.484834Z Y: t=1 plays=2296 most=1
+2026-03-19T00:49:39.153763Z Y: t=12 plays=6 most=1 children=6
+2026-03-19T00:50:36.456052Z Y: t=12 plays=90 most=1 children=90
+2026-03-19T00:50:36.456052Z Y: t=11 plays=108 most=1 children=108
+2026-03-19T00:50:36.456052Z Y: t=10 plays=119 most=1 children=119
+2026-03-19T00:50:36.456052Z Y: t=9 plays=139 most=1 children=139
+2026-03-19T00:50:36.456052Z Y: t=8 plays=159 most=1 children=159
+2026-03-19T00:50:36.456052Z Y: t=7 plays=210 most=1 children=210
+2026-03-19T00:50:36.456052Z Y: t=6 plays=288 most=1 children=288
+2026-03-19T00:50:36.456052Z Y: t=5 plays=263 most=1 children=263
+2026-03-19T00:50:36.456052Z Y: t=4 plays=324 most=1 children=324
+2026-03-19T00:50:36.456052Z Y: t=3 plays=626 most=1 children=626
+2026-03-19T00:50:36.456052Z Y: t=2 plays=884 most=1 children=884
+2026-03-19T00:50:36.456052Z Y: t=1 plays=1605 most=1 children=1605
+2026-03-19T00:58:33.022260Z Y: t=12 plays=77 most=1 children=77 moveList=194
+2026-03-19T00:58:33.022260Z Y: t=11 plays=103 most=1 children=103 moveList=213
+2026-03-19T00:58:33.022260Z Y: t=10 plays=130 most=1 children=130 moveList=342
+2026-03-19T00:58:33.022260Z Y: t=9 plays=136 most=1 children=136 moveList=365
+2026-03-19T00:58:33.022260Z Y: t=8 plays=177 most=1 children=177 moveList=380
+2026-03-19T00:58:33.022260Z Y: t=7 plays=176 most=1 children=176 moveList=307
+2026-03-19T00:58:33.022260Z Y: t=6 plays=232 most=1 children=232 moveList=263
+2026-03-19T00:58:33.022260Z Y: t=5 plays=290 most=1 children=290 moveList=197
+2026-03-19T00:58:33.022260Z Y: t=4 plays=353 most=1 children=353 moveList=167
+2026-03-19T01:49:38.554254Z Y: t=12 plays=56 most=1 children=56 moveList=244
+2026-03-19T01:49:38.554254Z Y: t=11 plays=70 most=1 children=70 moveList=250
+2026-03-19T01:49:38.554254Z Y: t=10 plays=79 most=1 children=79 moveList=330
+2026-03-19T01:49:38.554254Z Y: t=9 plays=94 most=1 children=94 moveList=309
+2026-03-19T01:49:38.554254Z Y: t=8 plays=119 most=1 children=119 moveList=282
+2026-03-19T01:49:38.554254Z Y: t=7 plays=137 most=1 children=137 moveList=175
+2026-03-19T01:57:07.831856Z Y: t=12 plays=65 most=65 children=1 moveList=219
+2026-03-19T01:57:07.831856Z Y: t=11 plays=80 most=80 children=1 moveList=300
+2026-03-19T01:57:07.831856Z Y: t=10 plays=77 most=77 children=1 moveList=424
+2026-03-19T01:57:07.831856Z Y: t=9 plays=132 most=132 children=1 moveList=383
+2026-03-19T01:57:07.831856Z Y: t=8 plays=164 most=164 children=1 moveList=379
+2026-03-19T01:57:07.831856Z Y: t=7 plays=202 most=202 children=1 moveList=342
+2026-03-19T01:57:07.831856Z Y: t=6 plays=246 most=246 children=1 moveList=337
+2026-03-19T01:57:07.831856Z Y: t=5 plays=407 most=407 children=1 moveList=309
+2026-03-19T01:57:07.831856Z Y: t=4 plays=603 most=603 children=1 moveList=187
+2026-03-19T01:57:07.831856Z Y: t=3 plays=1100 most=1100 children=1 moveList=143
+2026-03-19T01:57:07.831856Z Y: t=2 plays=1851 most=1851 children=1 moveList=100
+2026-03-19T02:04:20.365594Z Y: t=12 plays=63 most=1 children=63 moveList=212
+2026-03-19T02:04:20.365594Z Y: t=11 plays=73 most=1 children=73 moveList=343
+2026-03-19T02:04:20.365594Z Y: t=10 plays=89 most=1 children=89 moveList=415
+2026-03-19T02:04:20.365594Z Y: t=9 plays=105 most=1 children=105 moveList=381
+2026-03-19T02:04:20.365594Z Y: t=8 plays=120 most=1 children=120 moveList=303
+2026-03-19T02:04:20.365594Z Y: t=7 plays=132 most=1 children=132 moveList=269
+2026-03-19T02:04:20.365594Z Y: t=6 plays=170 most=1 children=170 moveList=298
+2026-03-19T02:04:20.365594Z Y: t=5 plays=208 most=1 children=208 moveList=238
+2026-03-19T02:14:15.991985Z Y: t=12 plays=1 most=1 children=1 moveList=232
+2026-03-19T02:14:15.991985Z Y: t=11 plays=2 most=1 children=2 moveList=200
+2026-03-19T02:14:15.991985Z Y: t=10 plays=3 most=1 children=3 moveList=336
+2026-03-19T02:14:15.991985Z Y: t=9 plays=2 most=1 children=2 moveList=364
+2026-03-19T02:33:08.080347Z Y: t=12 plays=2 most=1 children=2 moveList=233
+2026-03-19T02:33:08.080347Z Y: t=11 plays=4 most=1 children=4 moveList=263
+2026-03-19T02:38:04.928011Z Y: t=12 plays=3 most=1 children=3 moveList=247
+2026-03-19T02:52:47.654232Z Y: t=12 plays=2 most=1 children=2 moveList=219
+2026-03-19T02:53:40.923733Z Y: t=12 plays=74 most=2 children=72 moveList=211
+2026-03-19T02:53:40.923733Z Y: t=11 plays=94 most=2 children=91 moveList=258
+2026-03-19T02:53:40.923733Z Y: t=10 plays=110 most=2 children=106 moveList=396
+2026-03-19T02:53:40.923733Z Y: t=9 plays=125 most=2 children=122 moveList=339
+2026-03-19T02:53:40.923733Z Y: t=8 plays=147 most=2 children=144 moveList=278
+2026-03-19T02:53:40.923733Z Y: t=7 plays=189 most=2 children=185 moveList=233
+2026-03-19T03:18:08.364280Z Y: t=12 plays=668 most=9 children=190 moveList=190
+2026-03-19T03:18:08.364280Z Y: t=11 plays=772 most=7 children=200 moveList=200
+2026-03-19T03:18:08.364280Z Y: t=10 plays=842 most=6 children=311 moveList=311
+2026-03-19T03:18:08.364280Z Y: t=9 plays=1126 most=6 children=331 moveList=331
+2026-03-19T03:18:08.364280Z Y: t=8 plays=1402 most=7 children=301 moveList=301
+2026-03-19T03:18:08.364280Z Y: t=7 plays=1919 most=29 children=131 moveList=131
+2026-03-19T03:18:08.364280Z Y: t=6 plays=2195 most=36 children=120 moveList=120
+2026-03-19T03:18:08.364280Z Y: t=5 plays=3607 most=64 children=97 moveList=97
+2026-03-19T08:59:39.769578Z Y: t=12 plays=823 most=8 children=216 moveList=216
+2026-03-19T08:59:39.769578Z Y: t=11 plays=849 most=6 children=292 moveList=292
+2026-03-19T08:59:39.769578Z Y: t=10 plays=897 most=3 children=403 moveList=403
+2026-03-19T08:59:39.769578Z Y: t=9 plays=1252 most=11 children=326 moveList=326
+2026-03-19T08:59:39.769578Z Y: t=8 plays=1529 most=6 children=384 moveList=384
+2026-03-19T08:59:39.769578Z Y: t=7 plays=2154 most=31 children=273 moveList=273
+2026-03-19T08:59:39.769578Z Y: t=6 plays=2814 most=63 children=237 moveList=237
+2026-03-19T08:59:39.769578Z Y: t=5 plays=3969 most=238 children=178 moveList=178
+2026-03-19T08:59:39.769578Z Y: t=4 plays=6311 most=64 children=142 moveList=142
+2026-03-19T08:59:39.769578Z Y: t=3 plays=9835 most=373 children=36 moveList=36
+2026-03-19T12:17:53.427303Z Y: t=12 plays=570 most=6 children=221 moveList=221
+2026-03-19T12:17:53.427303Z Y: t=11 plays=754 most=12 children=186 moveList=186
+2026-03-19T12:17:53.427303Z Y: t=10 plays=909 most=7 children=213 moveList=213
+2026-03-19T12:17:53.427303Z Y: t=9 plays=1050 most=11 children=195 moveList=195
+2026-03-19T12:17:53.427303Z Y: t=8 plays=1298 most=7 children=263 moveList=263
+2026-03-19T12:17:53.427303Z Y: t=7 plays=1489 most=9 children=207 moveList=207
+2026-03-19T12:17:53.427303Z Y: t=6 plays=2160 most=22 children=126 moveList=126
+2026-03-19T12:17:53.427303Z Y: t=5 plays=3127 most=155 children=32 moveList=32
+2026-03-19T12:17:53.427303Z Y: t=4 plays=4633 most=1141 children=15 moveList=15
+2026-03-19T23:19:04.464803Z Y: t=12 plays=137 most=1 children=137 moveList=218
+2026-03-19T23:19:04.464803Z Y: t=11 plays=111 most=1 children=111 moveList=227
+2026-03-19T23:19:04.464803Z Y: t=10 plays=124 most=1 children=124 moveList=172
+2026-03-19T23:19:04.464803Z Y: t=9 plays=164 most=1 children=164 moveList=209
+2026-03-19T23:19:04.464803Z Y: t=8 plays=217 most=3 children=76 moveList=76
+2026-03-19T23:19:04.464803Z Y: t=7 plays=247 most=4 children=82 moveList=82
+2026-03-19T23:19:04.464803Z Y: t=6 plays=276 most=2 children=237 moveList=237
+2026-03-19T23:19:04.464803Z Y: t=5 plays=388 most=5 children=104 moveList=104
+2026-03-19T23:19:04.464803Z Y: t=4 plays=586 most=18 children=45 moveList=45
+2026-03-19T23:19:04.464803Z Y: t=3 plays=948 most=15 children=68 moveList=68
+2026-03-20T00:17:53.126691Z Y: t=12 plays=3 most=1 children=3 moveList=220
+2026-03-20T00:40:56.474228Z Y: t=12 plays=87 most=1 children=87 moveList=202
+2026-03-20T00:40:56.474228Z Y: t=11 plays=140 most=1 children=140 moveList=206
+2026-03-20T00:40:56.474228Z Y: t=10 plays=169 most=1 children=169 moveList=171
+2026-03-20T00:40:56.474228Z Y: t=9 plays=217 most=1 children=217 moveList=303
+2026-03-20T00:40:56.474228Z Y: t=8 plays=246 most=1 children=246 moveList=255
+2026-03-20T00:40:56.474228Z Y: t=7 plays=291 most=2 children=216 moveList=216
+2026-03-20T00:40:56.474228Z Y: t=6 plays=385 most=6 children=144 moveList=144
+2026-03-20T00:40:56.474228Z Y: t=5 plays=536 most=20 children=40 moveList=40
+2026-03-20T00:40:56.474228Z Y: t=4 plays=721 most=105 children=10 moveList=10
+2026-03-20T00:40:56.474228Z Y: t=3 plays=969 most=30 children=33 moveList=33
+2026-03-20T00:40:56.474228Z Y: t=2 plays=2567 most=514 children=5 moveList=5
+2026-03-20T02:28:00.237615Z Y: t=12 plays=91 most=1 children=91 moveList=253
+2026-03-20T02:28:00.237615Z Y: t=11 plays=137 most=1 children=137 moveList=306
+2026-03-20T02:28:00.237615Z Y: t=10 plays=116 most=1 children=116 moveList=248
+2026-03-20T02:28:00.237615Z Y: t=9 plays=122 most=1 children=122 moveList=180
+2026-03-20T02:28:00.237615Z Y: t=8 plays=140 most=1 children=140 moveList=158
+2026-03-20T02:28:00.237615Z Y: t=7 plays=161 most=1 children=161 moveList=365
+2026-03-20T02:28:00.237615Z Y: t=6 plays=211 most=1 children=211 moveList=335
+2026-03-20T02:28:00.237615Z Y: t=5 plays=288 most=18 children=16 moveList=16
+2026-03-20T02:28:00.237615Z Y: t=4 plays=447 most=30 children=15 moveList=15
+2026-03-20T02:28:00.237615Z Y: t=3 plays=1003 most=201 children=5 moveList=5
+2026-03-20T15:49:17.111933Z Y: t=12 plays=123 most=1 children=123 moveList=225
+2026-03-20T15:49:17.111933Z Y: t=11 plays=139 most=1 children=139 moveList=179
+2026-03-20T15:49:17.111933Z Y: t=10 plays=163 most=1 children=163 moveList=265
+2026-03-20T15:49:17.111933Z Y: t=9 plays=201 most=1 children=201 moveList=227
+2026-03-20T15:49:17.111933Z Y: t=8 plays=243 most=1 children=243 moveList=282
+2026-03-20T15:49:17.111933Z Y: t=7 plays=325 most=3 children=139 moveList=139
+2026-03-20T15:49:17.111933Z Y: t=6 plays=404 most=4 children=115 moveList=115
+2026-03-20T15:49:17.111933Z Y: t=5 plays=483 most=6 children=98 moveList=98
+2026-03-20T15:49:17.111933Z Y: t=4 plays=699 most=27 children=41 moveList=41
+2026-03-20T15:49:17.111933Z Y: t=3 plays=1657 most=489 children=16 moveList=16
+2026-03-20T18:12:58.474911Z Y: t=12 plays=96 most=1 children=96 moveList=225
+2026-03-20T18:12:58.474911Z Y: t=11 plays=117 most=1 children=117 moveList=149
+2026-03-20T18:12:58.474911Z Y: t=10 plays=135 most=1 children=135 moveList=178
+2026-03-20T18:12:58.474911Z Y: t=9 plays=152 most=1 children=152 moveList=292
+2026-03-20T18:12:58.474911Z Y: t=8 plays=204 most=2 children=199 moveList=199
+2026-03-20T18:12:58.474911Z Y: t=7 plays=324 most=7 children=63 moveList=63
+2026-03-20T18:12:58.474911Z Y: t=6 plays=416 most=32 children=13 moveList=13
+2026-03-20T18:12:58.474911Z Y: t=5 plays=495 most=31 children=16 moveList=16
+2026-03-20T18:12:58.474911Z Y: t=4 plays=666 most=52 children=13 moveList=13
+2026-03-20T18:12:58.474911Z Y: t=3 plays=1030 most=19 children=196 moveList=196
+2026-03-20T18:12:58.474911Z Y: t=2 plays=1814 most=6 children=443 moveList=443
+2026-03-20T18:12:58.474911Z Y: t=1 plays=6463 most=105 children=251 moveList=251
+2026-03-20T19:21:59.747833Z Y: t=12 plays=764 most=5 children=232 moveList=232
+2026-03-20T19:21:59.747833Z Y: t=11 plays=1000 most=6 children=179 moveList=179
+2026-03-20T19:21:59.747833Z Y: t=10 plays=1161 most=6 children=259 moveList=259
+2026-03-20T19:21:59.747833Z Y: t=9 plays=1361 most=10 children=292 moveList=292
+2026-03-20T19:21:59.747833Z Y: t=8 plays=1660 most=18 children=280 moveList=280
+2026-03-20T19:21:59.747833Z Y: t=7 plays=2140 most=363 children=131 moveList=131
+2026-03-20T19:21:59.747833Z Y: t=6 plays=2471 most=19 children=171 moveList=171
+2026-03-20T19:21:59.747833Z Y: t=5 plays=3420 most=36 children=132 moveList=132
+2026-03-20T19:21:59.747833Z Y: t=4 plays=4637 most=42 children=112 moveList=112
+2026-03-20T19:21:59.747833Z Y: t=3 plays=6789 most=18 children=386 moveList=386
+2026-03-20T19:21:59.747833Z Y: t=2 plays=22616 most=64 children=357 moveList=357
+2026-03-20T19:21:59.747833Z Y: t=1 plays=56686 most=159 children=357 moveList=357
+2026-03-21T00:52:51.017418Z Y: t=12 plays=520 most=5 children=225 moveList=225
+2026-03-21T00:52:51.017418Z Y: t=11 plays=600 most=4 children=216 moveList=216
+2026-03-21T00:52:51.017418Z Y: t=10 plays=818 most=5 children=278 moveList=278
+2026-03-21T00:52:51.017418Z Y: t=9 plays=1104 most=11 children=313 moveList=313
+2026-03-21T00:52:51.017418Z Y: t=8 plays=1476 most=7 children=324 moveList=324
+2026-03-21T00:52:51.017418Z Y: t=7 plays=1375 most=7 children=276 moveList=276
+2026-03-21T00:52:51.017418Z Y: t=6 plays=1684 most=9 children=210 moveList=210
+2026-03-21T00:52:51.017418Z Y: t=5 plays=2071 most=5 children=454 moveList=454
+2026-03-21T00:52:51.017418Z Y: t=4 plays=3176 most=8 children=436 moveList=436
+2026-03-21T00:52:51.017418Z Y: t=3 plays=5475 most=14 children=408 moveList=408
+2026-03-21T00:52:51.017418Z Y: t=2 plays=9971 most=17 children=616 moveList=616
+2026-03-21T14:47:52.749652Z Y: t=12 plays=624 most=5 children=210 moveList=210
+2026-03-21T14:47:52.749652Z Y: t=11 plays=719 most=5 children=225 moveList=225
+2026-03-21T14:47:52.749652Z Y: t=10 plays=952 most=11 children=265 moveList=265
+2026-03-21T14:47:52.749652Z Y: t=9 plays=955 most=4 children=287 moveList=287
+2026-03-21T14:47:52.749652Z Y: t=8 plays=1163 most=3 children=435 moveList=435
+2026-03-21T14:47:52.749652Z Y: t=7 plays=1587 most=4 children=415 moveList=415
+2026-03-21T14:47:52.749652Z Y: t=6 plays=1908 most=5 children=391 moveList=391
+2026-03-21T14:47:52.749652Z Y: t=5 plays=2503 most=7 children=381 moveList=381
+2026-03-21T14:47:52.749652Z Y: t=4 plays=3460 most=11 children=343 moveList=343
+2026-03-21T14:47:52.749652Z Y: t=3 plays=5249 most=16 children=338 moveList=338
+2026-03-21T14:47:52.749652Z Y: t=2 plays=11541 most=34 children=342 moveList=342
+2026-03-21T15:46:46.346732Z Y: t=12 plays=584 most=6 children=212 moveList=212
+2026-03-21T15:46:46.346732Z Y: t=11 plays=649 most=2 children=326 moveList=326
+2026-03-21T15:46:46.346732Z Y: t=10 plays=853 most=2 children=439 moveList=439
+2026-03-21T15:46:46.346732Z Y: t=9 plays=887 most=2 children=566 moveList=566
+2026-03-21T15:46:46.346732Z Y: t=8 plays=1024 most=2 children=608 moveList=608
+2026-03-21T15:46:46.346732Z Y: t=7 plays=1250 most=3 children=544 moveList=544
+2026-03-21T15:46:46.346732Z Y: t=6 plays=1489 most=4 children=423 moveList=423
+2026-03-21T15:46:46.346732Z Y: t=5 plays=1980 most=6 children=341 moveList=341
+2026-03-21T15:46:46.346732Z Y: t=4 plays=3020 most=12 children=266 moveList=266
+2026-03-21T15:46:46.346732Z Y: t=3 plays=4854 most=10 children=505 moveList=505
+2026-03-21T15:46:46.346732Z Y: t=2 plays=18806 most=41 children=459 moveList=459
+2026-03-21T15:46:46.346732Z Y: t=1 plays=13634872 most=31130 children=438 moveList=438

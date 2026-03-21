@@ -7,18 +7,19 @@ public class MonteCarloNode {
     private GameState state;
     private MonteCarloNode parent;
     private ArrayList<MonteCarloNode> childrenNodes;
-    private ArrayList<Move> childrenMoves;
+    private ArrayList<Move> childrenMoves, unvisitedMoves;
     private boolean isYellow;
     private int wins, visits;
-    private float ucb, UCBconst;
+    private float UCBconst;
 
     /**
      * Generate a new child node from a parent.
+     * @param algo the MCTS algorithm in use
      * @param gameState the game state at this node
      * @param parent the parent node to this
      * @param UCBconst constant for calculating Upper Confidence Bounds (typically sqrt(2))
      */
-    public MonteCarloNode(GameState gameState, MonteCarloNode parent, float UCBconst) {
+    public MonteCarloNode(MonteCarloAlgo algo, GameState gameState, MonteCarloNode parent, float UCBconst) {
         this.state = gameState;
         this.parent = parent;
         this.isYellow = !parent.isYellow();
@@ -27,34 +28,38 @@ public class MonteCarloNode {
         this.wins = 0;
         this.visits = 0;
         this.UCBconst = UCBconst;
+
+        if (gameState.getTurnsRemaining() != 0) {
+            if (!this.isYellow == algo.isYellow()) {this.unvisitedMoves = algo.getAllMyMoves(gameState, algo.isYellow());}
+            else {this.unvisitedMoves = algo.getAllOpponentMoves(gameState, algo.isYellow());}
+        }
     }
 
     /**
-     * Generate a fresh node.
+     * Generate a fresh node. It has no parent (getParent returns null).
+     * @param algo the MCTS algorithm in use
      * @param gameState the game state at this node
-     * @param isYellow which player this node belongs to (tracks that player's wins through this node)
      * @param UCBconst constant for calculating Upper Confidence Bounds (typically sqrt(2))
      */
-    public MonteCarloNode(GameState gameState, boolean isYellow, float UCBconst) {
+    public MonteCarloNode(MonteCarloAlgo algo, GameState gameState, float UCBconst) {
         this.state = gameState;
         this.parent = null;
-        this.isYellow = isYellow;
+        this.isYellow = !algo.isYellow();
         this.childrenNodes = new ArrayList<MonteCarloNode>();
         this.childrenMoves = new ArrayList<Move>();
         this.wins = 0;
         this.visits = 0;
         this.UCBconst = UCBconst;
+        this.unvisitedMoves = algo.getAllMyMoves(gameState, algo.isYellow());
     }
 
     /**
-     * Update the Upper Confidence Bounds for this node, for backpropagation phase.
+     * Calculates and returns the Upper Confidence Bounds for this node.
+     * @return UCB value
      */
-    public void updateUCB() {
-        this.ucb = (float) ((this.wins/this.visits) + (this.UCBconst * Math.sqrt(Math.log(parent.visits)/this.visits)));
-    }
-
     public float getUCB() {
-        return this.ucb;
+        if (this.visits == 0) {return Float.MAX_VALUE;}
+        else {return (float) ((this.wins/this.visits) + (this.UCBconst * Math.sqrt(Math.log(parent.visits)/this.visits)));}
     } 
 
     /**
@@ -89,6 +94,21 @@ public class MonteCarloNode {
     public void addChild(MonteCarloNode childNode, Move childMove) {
         this.childrenNodes.add(childNode);
         this.childrenMoves.add(childMove);
+    }
+
+    /**
+     * Pops and returns a move from the list of unvisited moves from this node. The popped move is removed from the list but not added to any other lists.
+     * @param popRandom if true, pops a random move from the list, otherwise pops the first element
+     * @return a move from the list
+     */
+    public Move popUnvisitedMove(boolean popRandom) {
+        int index = 0;
+        if (popRandom) {index = (int) Math.floor(Math.random()*this.unvisitedMoves.size());}
+        return this.unvisitedMoves.remove(index);
+    }
+
+    public boolean hasUnvisitedMoves() {
+        return this.unvisitedMoves.size() > 0;
     }
 
     public boolean isYellow() {

@@ -61,6 +61,9 @@ public abstract class Player {
                         break;
                     }
                 }
+                if (!gameState.getBlueHand().contains(card)) {
+                    opponentCards.add(card);
+                }
             }
             opponentSpecialsHeld = gameState.getBlueSpecialsHeld();
         } else {
@@ -71,6 +74,9 @@ public abstract class Player {
                         opponentCards.add(i, card);
                         break;
                     }
+                }
+                if (!gameState.getYellowHand().contains(card)) {
+                    opponentCards.add(card);
                 }
             }
             opponentSpecialsHeld = gameState.getYellowSpecialsHeld();

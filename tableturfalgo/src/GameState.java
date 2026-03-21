@@ -93,16 +93,22 @@ public class GameState {
             for (int i=0; i<yellowHand.size(); i++) {
                 if (card.getSize() > yellowHand.get(i).getSize()) {
                     yellowHand.add(i, card);
-                    break;
+                    return;
                 }
+            }
+            if (!yellowHand.contains(card)) {
+                yellowHand.add(card);
             }
         } else {
             blueDeck.remove(card);
             for (int i=0; i<blueHand.size(); i++) {
                 if (card.getSize() > blueHand.get(i).getSize()) {
                     blueHand.add(i, card);
-                    break;
+                    return;
                 }
+            }
+            if (!blueHand.contains(card)) {
+                blueHand.add(card);
             }
         }
     }
