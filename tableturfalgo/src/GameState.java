@@ -229,6 +229,14 @@ public class GameState {
     }
 
     /**
+     * Resets the game state to the start of the turn, where neither player has made a decision.
+     */
+    public void clearMoves() {
+        this.yellowMove = null;
+        this.blueMove = null;
+    }
+
+    /**
      * Checks if both players have moves decided at this game state. If true, {@code endTurn()} may be run.
      * @return true if both players have moves assigned
      * @see GameState#endTurn()

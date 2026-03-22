@@ -300,3 +300,39 @@
 2026-03-21T15:46:46.346732Z Y: t=3 plays=4854 most=10 children=505 moveList=505
 2026-03-21T15:46:46.346732Z Y: t=2 plays=18806 most=41 children=459 moveList=459
 2026-03-21T15:46:46.346732Z Y: t=1 plays=13634872 most=31130 children=438 moveList=438
+2026-03-21T23:31:55.104993Z Y: t=12 plays=305 most=2 children=228 moveList=228 duration=150121ms
+2026-03-21T23:31:55.104993Z Y: t=11 plays=515 most=5 children=218 moveList=218 duration=150148ms
+2026-03-21T23:31:55.104993Z Y: t=10 plays=581 most=6 children=244 moveList=244 duration=150015ms
+2026-03-21T23:31:55.104993Z Y: t=9 plays=681 most=6 children=228 moveList=228 duration=150171ms
+2026-03-21T23:31:55.104993Z Y: t=8 plays=730 most=3 children=278 moveList=278 duration=150023ms
+2026-03-21T23:31:55.104993Z Y: t=7 plays=912 most=11 children=122 moveList=122 duration=150042ms
+2026-03-21T23:31:55.104993Z Y: t=6 plays=1212 most=17 children=72 moveList=72 duration=150113ms
+2026-03-21T23:31:55.104993Z Y: t=5 plays=1416 most=15 children=120 moveList=120 duration=150058ms
+2026-03-21T23:31:55.104993Z Y: t=4 plays=2204 most=37 children=61 moveList=61 duration=150060ms
+2026-03-21T23:31:55.104993Z Y: t=3 plays=4031 most=116 children=35 moveList=35 duration=150030ms
+2026-03-21T23:31:55.104993Z Y: t=2 plays=16434 most=4109 children=4 moveList=4 duration=150008ms
+2026-03-21T23:31:55.104993Z Y: t=1 plays=8121957 most=451220 children=18 moveList=18 duration=150000ms
+2026-03-22T00:49:13.039594Z B: t=12 plays=26 most=1 children=26 moveList=199 duration=11214ms
+2026-03-22T00:49:13.039594Z B: t=11 plays=53 most=1 children=53 moveList=398 duration=17100ms
+2026-03-22T00:49:13.039594Z B: t=10 plays=49 most=1 children=49 moveList=343 duration=13785ms
+2026-03-22T00:49:13.039594Z B: t=9 plays=45 most=1 children=45 moveList=310 duration=12265ms
+2026-03-22T00:49:13.039594Z B: t=8 plays=32 most=1 children=32 moveList=223 duration=8608ms
+2026-03-22T00:49:13.039594Z B: t=7 plays=40 most=1 children=40 moveList=129 duration=6793ms
+2026-03-22T00:49:13.039594Z B: t=6 plays=31 most=1 children=31 moveList=288 duration=4717ms
+2026-03-22T00:49:13.039594Z B: t=5 plays=35 most=1 children=35 moveList=296 duration=4274ms
+2026-03-22T00:49:13.039594Z B: t=4 plays=67 most=1 children=67 moveList=278 duration=5928ms
+2026-03-22T00:49:13.039594Z B: t=3 plays=106 most=1 children=106 moveList=251 duration=7475ms
+2026-03-22T00:49:13.039594Z B: t=2 plays=7 most=1 children=7 moveList=239 duration=224ms
+2026-03-22T00:49:13.039594Z B: t=1 plays=4805 most=1202 children=4 moveList=4 duration=67ms
+2026-03-22T00:54:10.772142Z B: t=12 plays=374 most=2 children=199 moveList=199 duration=150269ms
+2026-03-22T00:54:10.772142Z B: t=11 plays=518 most=6 children=194 moveList=194 duration=150044ms
+2026-03-22T00:54:10.772142Z B: t=10 plays=605 most=6 children=163 moveList=163 duration=150168ms
+2026-03-22T00:54:10.772142Z B: t=9 plays=722 most=6 children=138 moveList=138 duration=150171ms
+2026-03-22T00:54:10.772142Z B: t=8 plays=842 most=14 children=63 moveList=63 duration=150238ms
+2026-03-22T00:54:10.772142Z B: t=7 plays=1038 most=22 children=48 moveList=48 duration=150029ms
+2026-03-22T00:54:10.772142Z B: t=6 plays=1241 most=20 children=63 moveList=63 duration=150002ms
+2026-03-22T00:54:10.772142Z B: t=5 plays=1580 most=5 children=316 moveList=316 duration=150035ms
+2026-03-22T00:54:10.772142Z B: t=4 plays=2456 most=492 children=5 moveList=5 duration=150089ms
+2026-03-22T00:54:10.772142Z B: t=3 plays=3704 most=926 children=4 moveList=4 duration=150021ms
+2026-03-22T00:54:10.772142Z B: t=2 plays=105724 most=26431 children=4 moveList=4 duration=150014ms
+2026-03-22T00:54:10.772142Z B: t=1 plays=5875583 most=1468896 children=4 moveList=4 duration=150000ms

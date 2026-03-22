@@ -1,35 +1,60 @@
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 
+/**
+ * Play agent based on the alpha-beta (minimax) search algorithm. Writes stats about its operations to log file "alphabeta.txt". <br>
+ * The evaluation function (called at a terminal game state) is simply the difference in the number of occupied spaces of both players. <br>
+ * The heuristic function has 4 features: <br>
+ * - difference in number of occupied spaces of both players, always weighted at 1 <br>
+ * - difference in number of special points held by both players, weight variable <br>
+ * - difference in rank of furthest occupied space reached by both players, weight variable <br>
+ * - difference in rank of furthest occupied special space reached by both players, weight variable <br> <br>
+ * (difference is positive if this player has a higher amount than the opponent, negative otherwise; <br>
+ * rank is the number of rows away from a player's side of the board, starting at 1 on the player's side up to 26)
+ */
 public class AlphaBetaAlgo extends Player {
     private boolean imYellow;
     private String timestamp;
     private int explorationDepth;
-    private float evalWeightSpecialHeld, evalWeightFurthestOccupied, evalWeightFurthestSpecial;
+    private float heuristicSpecialHeld, heuristicFurthestOccupied, heuristicFurthestSpecial;
+    private Duration timeTakenThisTurn;
+    private int statNodes, statHeuristic, statEval;
 
-    public AlphaBetaAlgo(boolean imYellow, String timestamp, int maxExplorationDepth, float evalWeightSpecialHeld, float evalWeightFurthestOccupied, float evalWeightFurthestSpecial) {
+    /**
+     * Initialises an alpha-beta play agent.
+     * @param imYellow if this plays for yellow
+     * @param timestamp for identifying this game in log files ("alphabeta.txt" for this)
+     * @param maxExplorationDepth maximum amount of turns the search tree extends to, 1 being 1 turn (ie this player's move, then the opponent move, then cutoff)
+     * @param heuristicSpecialHeld weight (scalar multiplier) for "special points held" feature in heuristic function
+     * @param heuristicFurthestOccupied weight (scalar multiplier) for "rank of furthest occupied tile" feature in heuristic function
+     * @param heuristicFurthestSpecial weight (scalar multiplier) for "rank of furthest occupied special tile" feature in heuristic function
+     */
+    public AlphaBetaAlgo(boolean imYellow, String timestamp, int maxExplorationDepth, float heuristicSpecialHeld, float heuristicFurthestOccupied, float heuristicFurthestSpecial) {
         this.imYellow = imYellow;
         this.timestamp = timestamp;
         this.explorationDepth = maxExplorationDepth;
-        this.evalWeightSpecialHeld = evalWeightSpecialHeld;
-        this.evalWeightFurthestOccupied = evalWeightFurthestOccupied;
-        this.evalWeightFurthestSpecial = evalWeightFurthestSpecial;
+        this.heuristicSpecialHeld = heuristicSpecialHeld;
+        this.heuristicFurthestOccupied = heuristicFurthestOccupied;
+        this.heuristicFurthestSpecial = heuristicFurthestSpecial;
     }
 
     @Override
     public Move chooseMove(GameState gameState) throws IOException, InvalidEndTurnStateException {
-        ArrayList<Move> moveList = this.getAllMyMoves(gameState, imYellow);
+        Instant startTimestamp = Instant.now();
+
+        GameState rootState = new GameState(gameState);
+        rootState.clearMoves();
+        ArrayList<Move> moveList = this.getAllMyMoves(rootState, imYellow);
         float value = -100;
         Move output = null;
-
-        String msg = timestamp;
-        if (imYellow) {msg += " Y: t=";}
-        else {msg += " B: t=";}
-        msg += gameState.getTurnsRemaining() + " depth 1/" + this.explorationDepth + " maxNode=" + moveList.size();
-        WriteToLog.write("alphabeta.txt", msg);
+        this.statNodes = 1;
+        this.statHeuristic = 0;
+        this.statEval = 0;
 
         for (Move move : moveList) {
-            GameState minNode = new GameState(gameState);
+            GameState minNode = new GameState(rootState);
             if (imYellow) {minNode.setYellowMove(move);}
             else {minNode.setBlueMove(move);}
             
@@ -39,18 +64,26 @@ public class AlphaBetaAlgo extends Player {
                 output = move;
             }
         }
-        return output;
-    }
 
-    private float maxFunc(GameState maxState, int depth, float alpha, float beta) throws IOException, InvalidEndTurnStateException {
-        ArrayList<Move> moveList = this.getAllMyMoves(maxState, imYellow);
-        float value = -100;
-
+        timeTakenThisTurn = Duration.between(startTimestamp, Instant.now());
         String msg = timestamp;
         if (imYellow) {msg += " Y: t=";}
         else {msg += " B: t=";}
-        msg += maxState.getTurnsRemaining()+depth + " depth " + depth+1 + "/" + this.explorationDepth + " maxNode=" + moveList.size();
+        msg += rootState.getTurnsRemaining();
+        msg += " heur=" + statHeuristic;
+        msg += " eval=" + statEval;
+        msg += " nodes=" + statNodes;
+        msg += " moveList=" + moveList.size();
+        msg += " duration=" + timeTakenThisTurn.toMillis() + "ms";
         WriteToLog.write("alphabeta.txt", msg);
+
+        return output;
+    }
+
+    private float maxFunc(GameState maxState, int depth, float alpha, float beta) throws InvalidEndTurnStateException {
+        ArrayList<Move> moveList = this.getAllMyMoves(maxState, imYellow);
+        float value = -100;
+        this.statNodes += 1;
 
         for (Move move : moveList) {
             GameState minNode = new GameState(maxState);
@@ -68,15 +101,10 @@ public class AlphaBetaAlgo extends Player {
         return value;
     }
 
-    private float minFunc(GameState minState, int depth, float alpha, float beta) throws IOException, InvalidEndTurnStateException {
+    private float minFunc(GameState minState, int depth, float alpha, float beta) throws InvalidEndTurnStateException {
         ArrayList<Move> moveList = this.getAllOpponentMoves(minState, imYellow);
         float value = 100;
-
-        String msg = timestamp;
-        if (imYellow) {msg += " Y: t=";}
-        else {msg += " B: t=";}
-        msg += minState.getTurnsRemaining()+depth + " depth " + depth+1 + "/" + this.explorationDepth + " minNode=" + moveList.size();
-        WriteToLog.write("alphabeta.txt", msg);
+        this.statNodes += 1;
 
         for (Move move : moveList) {
             GameState endNode = new GameState(minState);
@@ -93,31 +121,29 @@ public class AlphaBetaAlgo extends Player {
         return value;
     }
 
-    private float endFunc(GameState endState, int depth, float alpha, float beta) throws IOException, InvalidEndTurnStateException {
+    private float endFunc(GameState endState, int depth, float alpha, float beta) throws InvalidEndTurnStateException {
         endState.endTurn(false);
 
         // check if this is a terminating node on the tree
         if (endState.getTurnsRemaining() == 0) {
+            this.statEval += 1;
             float value = endState.getBoard().getYellowOccupied() - endState.getBoard().getBlueOccupied();
             if (!imYellow) {value *= -1;}
             return value;
         } 
         depth += 1;
         if (depth >= this.explorationDepth) {
+            this.statHeuristic += 1;
             float value = endState.getBoard().getYellowOccupied() - endState.getBoard().getBlueOccupied();
-            value += this.evalWeightSpecialHeld * (endState.getYellowSpecialsHeld() - endState.getBlueSpecialsHeld());
-            value += this.evalWeightFurthestOccupied * (boardFurthestRank(endState.getBoard(), true, false) - boardFurthestRank(endState.getBoard(), false, false));
-            value += this.evalWeightFurthestSpecial * (boardFurthestRank(endState.getBoard(), true, true) - boardFurthestRank(endState.getBoard(), false, true));
+            value += this.heuristicSpecialHeld * (endState.getYellowSpecialsHeld() - endState.getBlueSpecialsHeld());
+            value += this.heuristicFurthestOccupied * (boardFurthestRank(endState.getBoard(), true, false) - boardFurthestRank(endState.getBoard(), false, false));
+            value += this.heuristicFurthestSpecial * (boardFurthestRank(endState.getBoard(), true, true) - boardFurthestRank(endState.getBoard(), false, true));
             if (!imYellow) {value *= -1;}
-
-            // System.out.print(endState.getBoard());
-            // System.out.println(value);
-            // System.out.println();
-
             return value;
         }
         
         // if not generate new max nodes
+        this.statNodes += 1;
         ArrayList<Card> myDeck;
         if (imYellow) {myDeck = endState.getYellowDeck();}
         else {myDeck = endState.getBlueDeck();}
@@ -149,5 +175,15 @@ public class AlphaBetaAlgo extends Player {
             }
         }
         return 0;
+    }
+
+    @Override
+    public Duration getTimeTaken() {
+        return timeTakenThisTurn;
+    }
+
+    @Override
+    public void setTimeAllowed(Duration timeAllowed) {
+        // does nothing, this algo has no time limit mechanism
     }
 }

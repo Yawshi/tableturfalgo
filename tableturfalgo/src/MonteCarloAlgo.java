@@ -10,7 +10,7 @@ import java.time.Instant;
 public class MonteCarloAlgo extends Player {
     private boolean imYellow;
     private String gameTimestamp;
-    private Duration timeAllowed;
+    private Duration timeAllowed, timeSpentThisTurn;
     private float UCBconst;
     private Player mySimulationAlgo, oppSimulationAlgo;
 
@@ -50,10 +50,12 @@ public class MonteCarloAlgo extends Player {
     }
 
     @Override
-    public Move chooseMove(GameState rootState) throws IOException, InvalidEndTurnStateException {
-        MonteCarloNode rootNode = new MonteCarloNode(this, rootState, UCBconst);
-        
+    public Move chooseMove(GameState gameState) throws IOException, InvalidEndTurnStateException {
         Instant endTimestamp = Instant.now().plus(timeAllowed);
+
+        GameState rootState = new GameState(gameState);
+        rootState.clearMoves();
+        MonteCarloNode rootNode = new MonteCarloNode(this, rootState, UCBconst);
         int statSimulations = 0;
         while (Instant.now().isBefore(endTimestamp)) {
             MonteCarloNode selectedNode = select(rootNode);
@@ -71,6 +73,7 @@ public class MonteCarloAlgo extends Player {
             }
         }
 
+        timeSpentThisTurn = Duration.between(endTimestamp.minus(timeAllowed), Instant.now());
         String msg = gameTimestamp;
         if (imYellow) {msg += " Y: t=";}
         else {msg += " B: t=";}
@@ -79,6 +82,7 @@ public class MonteCarloAlgo extends Player {
         msg += " most=" + mostVisits;
         msg += " children=" + rootNode.getChildrenMoves().size();
         msg += " moveList=" + this.getAllMyMoves(rootState, imYellow).size();
+        msg += " duration=" + timeSpentThisTurn.toMillis() + "ms";
         WriteToLog.write("montecarlo.txt", msg);
 
         return mostVisitedMove;
@@ -89,7 +93,7 @@ public class MonteCarloAlgo extends Player {
             return parentNode;
         }
         if (parentNode.hasUnvisitedMoves()) {
-            return expand(parentNode, parentNode.popUnvisitedMove(false));
+            return expand(parentNode, parentNode.popUnvisitedMove(true));
         }
         
         float highestChildUCB = -1;
@@ -176,5 +180,15 @@ public class MonteCarloAlgo extends Player {
 
     public boolean isYellow() {
         return this.imYellow;
+    }
+
+    @Override
+    public Duration getTimeTaken() {
+        return this.timeSpentThisTurn;
+    }
+
+    @Override
+    public void setTimeAllowed(Duration timeAllowed) {
+        this.timeAllowed = timeAllowed;
     }
 }

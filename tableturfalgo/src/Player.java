@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 
 /**
@@ -103,4 +104,7 @@ public abstract class Player {
      * @throws InvalidEndTurnStateException if an error occurs when attempting to perform end of turn actions
      */
     public abstract Move chooseMove(GameState gameState) throws IOException, InvalidEndTurnStateException;
+
+    public abstract Duration getTimeTaken();
+    public abstract void setTimeAllowed(Duration timeAllowed);
 }

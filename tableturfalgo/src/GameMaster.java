@@ -3,13 +3,25 @@ import java.util.ArrayList;
 
 /**
  * When created, runs a full game of Tableturf, played with the two specified game agents. <br>
+ * The game is played on Main Street, a 9x26 grid board. 
+ * Both players are using the Starter Deck, and the deck both players draw cards from are in the same order. The order is determined randomly. 
+ * (ie both players will draw the same cards each turn, but the card drawn is random and unknown to both players) <br>
  * Prints game stats to a log file named "gameend.txt".
  */
 public class GameMaster {
     private GameState game;
     Player yellowPlayer, bluePlayer;
 
-    public GameMaster(Player yellowPlayer, Player bluePlayer, String timestamp) throws IOException, InvalidEndTurnStateException {
+    /**
+     * Runs a full game of Tableturf, played with the two specified game agents.
+     * @param yellowPlayer play agent for yellow
+     * @param bluePlayer play agent for blue
+     * @param setBlueTimeLimitPerTurn if true, time limit for blue is set to be time taken for yellow that turn
+     * @param timestamp for identifying this game in log files ("gameend.txt" for this)
+     * @throws IOException if an error occurs writing to log files
+     * @throws InvalidEndTurnStateException if an error occurs when attempting to perform end of turn actions
+     */
+    public GameMaster(Player yellowPlayer, Player bluePlayer, boolean setBlueTimeLimitPerTurn,String timestamp) throws IOException, InvalidEndTurnStateException {
         ArrayList<Card> deck = makeStarterDeck();
         ArrayList<Card> yellowDeck = (ArrayList<Card>) deck.clone();
         ArrayList<Card> blueDeck = (ArrayList<Card>) deck.clone();
@@ -19,6 +31,8 @@ public class GameMaster {
 
         while (game.getTurnsRemaining() > 0) {
             game.setYellowMove(yellowPlayer.chooseMove(game));
+
+            if (setBlueTimeLimitPerTurn) {bluePlayer.setTimeAllowed(yellowPlayer.getTimeTaken());}
             game.setBlueMove(bluePlayer.chooseMove(game));
             game.endTurn();
             System.out.println(game);
@@ -158,8 +172,8 @@ public class GameMaster {
         cardList.add(marigold);
         
         ArrayList<Card> deck = new ArrayList<Card>();
-        for (int i=14; i>=0; i--) {
-            deck.add(cardList.remove((int) Math.floor(Math.random()*i)));
+        for (int i=0; i<15; i++) {
+            deck.add(cardList.remove((int) Math.floor(Math.random()*cardList.size())));
         }
         return deck;
     }
