@@ -15,13 +15,15 @@ public class GameMaster {
     /**
      * Runs a full game of Tableturf, played with the two specified game agents.
      * @param yellowPlayer play agent for yellow
+     * @param yellowName name for the yellow play agent, to be used in log files
      * @param bluePlayer play agent for blue
+     * @param blueName name for the blue play agent, to be used in log files
      * @param setBlueTimeLimitPerTurn if true, time limit for blue is set to be time taken for yellow that turn
      * @param timestamp for identifying this game in log files ("gameend.txt" for this)
      * @throws IOException if an error occurs writing to log files
      * @throws InvalidEndTurnStateException if an error occurs when attempting to perform end of turn actions
      */
-    public GameMaster(Player yellowPlayer, Player bluePlayer, boolean setBlueTimeLimitPerTurn,String timestamp) throws IOException, InvalidEndTurnStateException {
+    public GameMaster(Player yellowPlayer, String yellowName, Player bluePlayer, String blueName, boolean setBlueTimeLimitPerTurn, String timestamp) throws IOException, InvalidEndTurnStateException {
         ArrayList<Card> deck = makeStarterDeck();
         ArrayList<Card> yellowDeck = (ArrayList<Card>) deck.clone();
         ArrayList<Card> blueDeck = (ArrayList<Card>) deck.clone();
@@ -34,11 +36,13 @@ public class GameMaster {
 
             if (setBlueTimeLimitPerTurn) {bluePlayer.setTimeAllowed(yellowPlayer.getTimeTaken());}
             game.setBlueMove(bluePlayer.chooseMove(game));
+
             game.endTurn();
             System.out.println(game);
         }
 
-        String msg = timestamp + ": " + game.getBoard().getYellowOccupied() + " - " + game.getBoard().getBlueOccupied();
+        String msg = timestamp + ": Y=" + yellowName + " B=" + blueName;
+        msg += " results=" + game.getBoard().getYellowOccupied() + "-" + game.getBoard().getBlueOccupied();
         WriteToLog.write("gameend.txt", msg);
     }
 

@@ -4,7 +4,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 /**
- * Play agent based on the alpha-beta (minimax) search algorithm. Writes stats about its operations to log file "alphabeta.txt". <br>
+ * Play agent based on the minimax search algorithm. Optionally can perform alpha-beta pruning. <br>
+ * Writes stats about its operations to log file "minimax.txt" or "alpha-beta.txt". <br>
  * The evaluation function (called at a terminal game state) is simply the difference in the number of occupied spaces of both players. <br>
  * The heuristic function has 4 features: <br>
  * - difference in number of occupied spaces of both players, always weighted at 1 <br>
@@ -14,8 +15,8 @@ import java.util.ArrayList;
  * (difference is positive if this player has a higher amount than the opponent, negative otherwise; <br>
  * rank is the number of rows away from a player's side of the board, starting at 1 on the player's side up to 26)
  */
-public class AlphaBetaAlgo extends Player {
-    private boolean imYellow;
+public class MinimaxAlgo extends Player {
+    private boolean imYellow, isAlphaBeta;
     private String timestamp;
     private int explorationDepth;
     private float heuristicSpecialHeld, heuristicFurthestOccupied, heuristicFurthestSpecial;
@@ -23,16 +24,18 @@ public class AlphaBetaAlgo extends Player {
     private int statNodes, statHeuristic, statEval;
 
     /**
-     * Initialises an alpha-beta play agent.
+     * Initialises a minimax play agent.
      * @param imYellow if this plays for yellow
+     * @param isAlphaBeta if this performs alpha-beta pruning
      * @param timestamp for identifying this game in log files ("alphabeta.txt" for this)
      * @param maxExplorationDepth maximum amount of turns the search tree extends to, 1 being 1 turn (ie this player's move, then the opponent move, then cutoff)
      * @param heuristicSpecialHeld weight (scalar multiplier) for "special points held" feature in heuristic function
      * @param heuristicFurthestOccupied weight (scalar multiplier) for "rank of furthest occupied tile" feature in heuristic function
      * @param heuristicFurthestSpecial weight (scalar multiplier) for "rank of furthest occupied special tile" feature in heuristic function
      */
-    public AlphaBetaAlgo(boolean imYellow, String timestamp, int maxExplorationDepth, float heuristicSpecialHeld, float heuristicFurthestOccupied, float heuristicFurthestSpecial) {
+    public MinimaxAlgo(boolean imYellow, boolean isAlphaBeta, String timestamp, int maxExplorationDepth, float heuristicSpecialHeld, float heuristicFurthestOccupied, float heuristicFurthestSpecial) {
         this.imYellow = imYellow;
+        this.isAlphaBeta = isAlphaBeta;
         this.timestamp = timestamp;
         this.explorationDepth = maxExplorationDepth;
         this.heuristicSpecialHeld = heuristicSpecialHeld;
@@ -75,7 +78,8 @@ public class AlphaBetaAlgo extends Player {
         msg += " nodes=" + statNodes;
         msg += " moveList=" + moveList.size();
         msg += " duration=" + timeTakenThisTurn.toMillis() + "ms";
-        WriteToLog.write("alphabeta.txt", msg);
+        if (isAlphaBeta) {WriteToLog.write("alphabeta.txt", msg);}
+        else {WriteToLog.write("minimax.txt", msg);}
 
         return output;
     }
@@ -91,12 +95,12 @@ public class AlphaBetaAlgo extends Player {
             else {minNode.setBlueMove(move);}
             
             float nodeValue = minFunc(minNode, depth, alpha, beta);
-            if (value < nodeValue) {
-                value = nodeValue;
-                if (value > alpha) {alpha = value;}
+            if (value < nodeValue) {value = nodeValue;}
+            if (isAlphaBeta) {
+                if (value < nodeValue && value > alpha) {alpha = value;}
+                if (value >= beta) {return value;}
             }
-            if (value >= beta) {
-                return value;}
+            
         }
         return value;
     }
@@ -112,11 +116,12 @@ public class AlphaBetaAlgo extends Player {
             else {endNode.setYellowMove(move);}
 
             float nodeValue = endFunc(endNode, depth, alpha, beta);
-            if (value > nodeValue) {
-                value = nodeValue;
-                if (value < beta) {beta = value;}
+            if (value > nodeValue) {value = nodeValue;}
+            if (isAlphaBeta) {
+                if (value > nodeValue && value < beta) {beta = value;}
+                if (value <= alpha) {return value;}
             }
-            if (value <= alpha) {return value;}
+            
         }
         return value;
     }
