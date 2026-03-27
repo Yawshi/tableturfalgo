@@ -3,9 +3,42 @@ import java.time.Instant;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        for (int i=0; i<15; i++) {
-            runGame("montecarlo(L,150s)", "randomdummy");
-            runGame("randomdummy", "montecarlo(L,150s)");
+        // runGame("randomdummy", "montecarlo(D,240s)");
+        // runGame("randomdummy", "montecarlo(L,240s)");
+        for (int i=0; i<2; i++) {
+            try {
+                runGame("montecarlo(D,240s)", "randomdummy");
+            } catch (Exception e) {
+                i--;
+            }
+            
+        }
+
+        for (int i=0; i<2; i++) {
+            try {
+                runGame("randomdummy", "montecarlo(D,240s)");
+            } catch (Exception e) {
+                i--;
+            }
+            
+        }
+
+        for (int i=0; i<14; i++) {
+            try {
+                runGame("montecarlo(L,240s)", "randomdummy");
+            } catch (Exception e) {
+                i--;
+            }
+            
+        }
+
+        for (int i=0; i<14; i++) {
+            try {
+                runGame("randomdummy", "montecarlo(L,240s)");
+            } catch (Exception e) {
+                i--;
+            }
+            
         }
     }
 
@@ -19,12 +52,12 @@ public class App {
         // "randomdummy"
         // "minimax(0,0,0)"
         // "minimax(1.1,0.3,0.4)"
-        // "alphabeta(0,0,0)" missing x5*2
-        // "alphabeta(1.1,0.3,0.4)" missing x5*2
-        // "montecarlo(D,30s)" missing x5*2
-        // "montecarlo(D,150s)"
-        // "montecarlo(L,30s)" missing x15*2
-        // "montecarlo(L,150s)" missing x15*2
+        // "alphabeta(0,0,0)"
+        // "alphabeta(1.1,0.3,0.4)"
+        // "montecarlo(D,30s)"
+        // "montecarlo(D,300s)"
+        // "montecarlo(L,30s)"
+        // "montecarlo(L,300s)"
 
         Player yellowPlayer = generateNewPlayer(yellowName, true, timestamp);
         Player bluePlayer = generateNewPlayer(blueName, false, timestamp);
@@ -47,18 +80,18 @@ public class App {
                 {Player selfSim = new RandomDummyPlayer(isYellow, false);
                 Player oppSim = new RandomDummyPlayer(isYellow, true);
                 return new MonteCarloAlgo(isYellow, timestamp, Duration.ofSeconds(30), selfSim, oppSim);}
-            case "montecarlo(D,150s)":
+            case "montecarlo(D,240s)":
                 {Player selfSim = new RandomDummyPlayer(isYellow, false);
                 Player oppSim = new RandomDummyPlayer(isYellow, true);
-                return new MonteCarloAlgo(isYellow, timestamp, Duration.ofSeconds(150), selfSim, oppSim);}
+                return new MonteCarloAlgo(isYellow, timestamp, Duration.ofSeconds(240), selfSim, oppSim);}
             case "montecarlo(L,30s)":
                 {Player selfSim = new RandomLargeCardPlayer(isYellow, false);
                 Player oppSim = new RandomLargeCardPlayer(isYellow, true);
                 return new MonteCarloAlgo(isYellow, timestamp, Duration.ofSeconds(30), selfSim, oppSim);}
-            case "montecarlo(L,150s)":
+            case "montecarlo(L,240s)":
                 {Player selfSim = new RandomLargeCardPlayer(isYellow, false);
                 Player oppSim = new RandomLargeCardPlayer(isYellow, true);
-                return new MonteCarloAlgo(isYellow, timestamp, Duration.ofSeconds(150), selfSim, oppSim);}
+                return new MonteCarloAlgo(isYellow, timestamp, Duration.ofSeconds(240), selfSim, oppSim);}
             default:
                 return null;
         }

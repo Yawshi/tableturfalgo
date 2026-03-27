@@ -22,31 +22,35 @@ private boolean imYellow, playForOpponent;
 
     @Override
     public Move chooseMove(GameState gameState) throws IOException, InvalidEndTurnStateException {
-        ArrayList<Card> cards;
-        boolean playForYellow = (imYellow != playForOpponent);
-        if (playForYellow) {cards = gameState.getYellowHand();}
-        else {cards = gameState.getBlueHand();}
-        if (playForOpponent) {
-            if (playForYellow) {cards.addAll(gameState.getYellowDeck());}
-            else {cards.addAll(gameState.getBlueDeck());}
-        }
-        Card chosenCard = weightedRandomCard(cards);
+        ArrayList<Move> moveList;
+        if (!playForOpponent) {moveList = getAllMyMoves(gameState, imYellow);} 
+        else {moveList = getAllOpponentMoves(gameState, imYellow);}
+        if (moveList.size()<15) {return moveList.get((int) Math.floor(Math.random()*moveList.size()));}
 
-        ArrayList<Move> moveList = gameState.getBoard().getMoves(chosenCard, false, playForYellow);
-        if ((playForYellow && (chosenCard.getSpecialCost()<=gameState.getYellowSpecialsHeld())) 
-        || (!playForYellow && (chosenCard.getSpecialCost()<=gameState.getBlueSpecialsHeld()))) {
-            moveList.addAll(gameState.getBoard().getMoves(chosenCard, true, playForYellow));
-        }
-        if (moveList.size() == 0) {
-            for (Card card : cards) {
-                moveList.add(new Move(card, playForYellow));
+        Card chosenCard = weightedRandomCard(gameState);
+
+        int startIndex = -1;
+        int endIndex = moveList.size();
+        for (int i=0; i<moveList.size(); i++) {
+            if (startIndex == -1 && moveList.get(i).getBaseCard() == chosenCard) {startIndex = i;}
+            if (endIndex > i && startIndex != -1 && moveList.get(i).getBaseCard() != chosenCard) {
+                endIndex = i;
+                break;
             }
         }
-
-        return moveList.get((int) Math.floor(Math.random()*moveList.size()));
+        if (startIndex == -1) {startIndex = endIndex;}
+        return moveList.get((int) Math.floor(Math.random()*(endIndex-startIndex)) + startIndex);
     }
 
-    private Card weightedRandomCard(ArrayList<Card> cards) {
+    private Card weightedRandomCard(GameState gameState) {
+        ArrayList<Card> cards;
+        if (imYellow != playForOpponent) {cards = gameState.getYellowHand();}
+        else {cards = gameState.getBlueHand();}
+        if (playForOpponent) {
+            if (!imYellow) {cards.addAll(gameState.getYellowDeck());}
+            else {cards.addAll(gameState.getBlueDeck());}
+        }
+
         int sumSquares = 0;
         for (Card card : cards) {
             sumSquares += Math.pow(2, card.getSize());
