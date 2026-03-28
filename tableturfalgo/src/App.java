@@ -3,44 +3,17 @@ import java.time.Instant;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // runGame("randomdummy", "montecarlo(D,240s)");
-        // runGame("randomdummy", "montecarlo(L,240s)");
-        for (int i=0; i<2; i++) {
-            try {
-                runGame("montecarlo(D,240s)", "randomdummy");
-            } catch (Exception e) {
-                i--;
-            }
-            
-        }
-
-        for (int i=0; i<2; i++) {
-            try {
-                runGame("randomdummy", "montecarlo(D,240s)");
-            } catch (Exception e) {
-                i--;
-            }
-            
-        }
-
-        for (int i=0; i<14; i++) {
-            try {
-                runGame("montecarlo(L,240s)", "randomdummy");
-            } catch (Exception e) {
-                i--;
-            }
-            
-        }
-
-        for (int i=0; i<14; i++) {
-            try {
-                runGame("randomdummy", "montecarlo(L,240s)");
-            } catch (Exception e) {
-                i--;
-            }
-            
+        for (int i=0; i<15; i++) {
+            runGame("minimax(1.1,0.3,0.4)", "alphabeta(1.1,0.3,0.4)");
+            runGame("alphabeta(1.1,0.3,0.4)", "minimax(1.1,0.3,0.4)");
         }
     }
+
+    // remaining:
+    // monte(D,240) vs monte(L,240)
+    // alphabeta(H) vs monte(?,30)
+    // alphabeta(H) vs monte(?,240)
+    // monte(?,30) vs monte(?,240)
 
     static void runGame(String yellowName, String blueName) throws Exception {
         // generate a string to be a unique ID for this simulated game
@@ -55,9 +28,9 @@ public class App {
         // "alphabeta(0,0,0)"
         // "alphabeta(1.1,0.3,0.4)"
         // "montecarlo(D,30s)"
-        // "montecarlo(D,300s)"
+        // "montecarlo(D,240s)"
         // "montecarlo(L,30s)"
-        // "montecarlo(L,300s)"
+        // "montecarlo(L,240s)"
 
         Player yellowPlayer = generateNewPlayer(yellowName, true, timestamp);
         Player bluePlayer = generateNewPlayer(blueName, false, timestamp);
