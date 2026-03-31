@@ -3,14 +3,13 @@ import java.time.Instant;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        for (int i=0; i<15; i++) {
-            runGame("minimax(1.1,0.3,0.4)", "alphabeta(1.1,0.3,0.4)");
-            runGame("alphabeta(1.1,0.3,0.4)", "minimax(1.1,0.3,0.4)");
+        for (int i=0; i<5; i++) {
+            runGame("montecarlo(D,240s)", "montecarlo(L,240s)");
+            runGame("montecarlo(L,240s)", "montecarlo(D,240s)");
         }
     }
 
     // remaining:
-    // monte(D,240) vs monte(L,240)
     // alphabeta(H) vs monte(?,30)
     // alphabeta(H) vs monte(?,240)
     // monte(?,30) vs monte(?,240)
