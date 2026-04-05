@@ -3,16 +3,11 @@ import java.time.Instant;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        for (int i=0; i<5; i++) {
-            runGame("montecarlo(D,240s)", "montecarlo(L,240s)");
-            runGame("montecarlo(L,240s)", "montecarlo(D,240s)");
+        for (int i=0; i<15; i++) {
+            runGame("montecarlo(D,240s)", "alphabeta(1.1,0.3,0.4)");
+            runGame("alphabeta(1.1,0.3,0.4)", "montecarlo(D,240s)");
         }
     }
-
-    // remaining:
-    // alphabeta(H) vs monte(?,30)
-    // alphabeta(H) vs monte(?,240)
-    // monte(?,30) vs monte(?,240)
 
     static void runGame(String yellowName, String blueName) throws Exception {
         // generate a string to be a unique ID for this simulated game
